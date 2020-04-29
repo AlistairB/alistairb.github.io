@@ -1,74 +1,48 @@
 ---
 layout: post
-title: "Syntax Highlighting Post"
+title: "Haskell ADT Rules And When To Break Them"
 tags: [sample post, code, highlighting]
 comments: true
 ---
 
-Demo post displaying the various ways of highlighting code in Markdown.
+ADTs are a powerful tool for structering data. There are an array of options and Haskell provides many inbuilt data types we can leverage. However, picking between these options can be tricky. Different solutions have different benefits.
 
-Syntax highlighting is a feature that displays source code, in different colors and fonts according to the category of terms. This feature facilitates writing in a structured language such as a programming language or a markup language as both structures and syntax errors are visually distinct. Highlighting does not affect the meaning of the text itself; it is intended only for human readers.[^1]
+First let's look at what we hope to get out of our structured types.
 
-[^1]: <http://en.wikipedia.org/wiki/Syntax_highlighting>
+## What we want
 
-### Highlighted Code Blocks
+### Type safety
 
-To modify styling and highlight colors edit `/_sass/_highlighter.scss`.
+Naievly we may make all our types use `String`.
 
-
-```css
-#container {
-    float: left;
-    margin: 0 -240px 0 0;
-    width: 100%;
+```haskell
+data Person = Person {
+  name :: String,
+  address :: String
 }
 ```
 
-```html
-{% raw %}<nav class="pagination" role="navigation">
-    {% if page.previous %}
-        <a href="{{ site.url }}{{ page.previous.url }}" class="btn" title="{{ page.previous.title }}">Previous article</a>
-    {% endif %}
-    {% if page.next %}
-        <a href="{{ site.url }}{{ page.next.url }}" class="btn" title="{{ page.next.title }}">Next article</a>
-    {% endif %}
-</nav><!-- /.pagination -->{% endraw %}
+But this means we can easily switch around `name` and `address` and the GHC won't help us.
+
+```haskell
+newtype PersonName = PersonName String
+newtype PersonAddress = PersonAddress String
+
+data Person = Person {
+  name :: PersonName,
+  address :: PersonAddress
+}
 ```
 
-```ruby
-module Jekyll
-  class TagIndex < Page
-    def initialize(site, base, dir, tag)
-      @site = site
-      @base = base
-      @dir = dir
-      @name = 'index.html'
-      self.process(@name)
-      self.read_yaml(File.join(base, '_layouts'), 'tag_index.html')
-      self.data['tag'] = tag
-      tag_title_prefix = site.config['tag_title_prefix'] || 'Tagged: '
-      tag_title_suffix = site.config['tag_title_suffix'] || '&#8211;'
-      self.data['title'] = "#{tag_title_prefix}#{tag}"
-      self.data['description'] = "An archive of posts tagged #{tag}."
-    end
-  end
-end
+In this version GHC will prevent us from switching them around. Similary we can write functions that operate on `PersonName` and again we can't pass in any old `String`.
+
+### Ease Of Use
+
+On the flip side, creating a `Person` now becomes more cumbersome.
+
+```haskell
+joanna :: Person
+joanna = Person (PersonName "Joanna") (PersonAddress "1 blah st")
 ```
 
-
-### Standard Code Block
-
-    {% raw %}<nav class="pagination" role="navigation">
-        {% if page.previous %}
-            <a href="{{ site.url }}{{ page.previous.url }}" class="btn" title="{{ page.previous.title }}">Previous article</a>
-        {% endif %}
-        {% if page.next %}
-            <a href="{{ site.url }}{{ page.next.url }}" class="btn" title="{{ page.next.title }}">Next article</a>
-        {% endif %}
-    </nav><!-- /.pagination -->{% endraw %}
-
-### GitHub Gist Embed
-
-An example of a Gist embed below.
-
-<script src="https://gist.github.com/mmistakes/43a355923921d22cd993.js"></script>
+Ok not too bad really. However, we can take the type

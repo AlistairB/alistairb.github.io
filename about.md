@@ -4,12 +4,10 @@ title: About
 permalink: /about/
 ---
 
-Some information about you!
+Hi! I am a developer and super enthusiastic about functional programming and Haskell.
 
-### More Information
-
-A place to include any other types of information that you'd like to include about yourself.
+<a href="https://alistairb.info/">My Resume</a>
 
 ### Contact me
 
-[email@domain.com](mailto:email@domain.com)
+The best way is to private message me <a href="https://twitter.com/AlistairBuzz">on Twitter</a>.
