@@ -25,7 +25,7 @@ The best thing about starting your own startup (if you have the luxury) is worki
 
 This has been a great learning opportunity that even if my startup completely fails I will consider worth it.
 
-## I'm Learning So Much! But I have noone to share it with :(
+## I'm Learning So Much! But I have noone to share it with 😢
 
 Working by yourself is extremely challenging. Even though the tech I am using is awesome to work with and I am learning a lot, it is lonely and unmotivating working alone. Day to day I am actually less happy than when I was working at my previous company with collegues. This is inspite of all the great things about this new challenge.
 
