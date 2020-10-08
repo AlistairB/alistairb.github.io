@@ -10,7 +10,7 @@ services:
     working_dir: /work
     volumes:
       - .:/work
-      - ruby2.5-gem-cache:/usr/local/bundle
+      - ruby2.7-gem-cache:/usr/local/bundle
 
   dev-run:
     extends:
@@ -20,5 +20,5 @@ services:
       - 4000:4000
 
 volumes:
-  ruby2.5-gem-cache:
+  ruby2.7-gem-cache:
     external: true
