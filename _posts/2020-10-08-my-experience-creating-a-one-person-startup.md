@@ -33,7 +33,7 @@ I keep learning new things and want to share it, but I have no teammates anymore
 
 ## Teams do great work, not individuals
 
-This is a personal belief of mine. Humans have evolved to operate together in tribes and I think we work best as groups, ideally with people of diverse backgrounds and experience.
+This is a personal belief of mine. Humans have evolved to operate together in tribes and I think we work best in groups, ideally with people of diverse backgrounds and experience.
 
 Working by yourself is frankly scary! Everyone makes mistakes and there is no safety net. I know in some cases I am making bad decisions that another developer would catch. I just need to do my best and leverage as much automated feedback tools (ie. code linting) as I can.
 
@@ -45,7 +45,7 @@ Most of the time I am forced to say no, this can wait. This is very different fr
 
 ## Conclusion
 
-Working alone has been very challenging. I would only recommend it to people who are very self motivated. Some days I just had to take a break as I couldn't maintain it.
+Working alone has been very challenging. I would only recommend it to people who are highly self motivated. Some days I just had to take a break as I couldn't maintain it.
 
 Still, overall I consider this time worth it for the learnings alone. It has given me a really good breadth of technical and business knowledge as I have been forced to do all aspects.
 
