@@ -4,7 +4,7 @@ title: "My Experience Creating A One Person Startup"
 comments: true
 ---
 
-I quit my job as a software developer to create a small development tool as a GitHub app that I hope to sell. I started working on this idea fulltime from Feb 2020 and I'm about a week out from (soft) launching.
+I quit my job as a software developer to create a small development tool as a GitHub app that I hope to sell. I started working on this idea fulltime from Feb 2020 and I'm now ready to (soft) launch.
 
 In a lot of ways it has been quite challenging and I've had some learnings I'd like to share.
 
@@ -23,9 +23,9 @@ Businesses are fairly conservative with technology choices. They want the tried 
 
 The best thing about starting your own startup (if you have the luxury) is working with tech that is hard to get approved in most companies. In my case I am writing the app in Haskell among other new (for me) tech choices.
 
-This has been a great learning opportunity that even if my startup completely fails I will consider worth it.
+This has been a great learning opportunity such that even if my startup completely fails I will consider it worth it.
 
-## I'm Learning So Much! But I have noone to share it with 😢
+## I'm learning so much! But I have noone to share it with 😢
 
 Working by yourself is extremely challenging. Even though the tech I am using is awesome to work with and I am learning a lot, it is lonely and unmotivating working alone. Day to day I am actually less happy than when I was working at my previous company with collegues. This is inspite of all the great things about this new challenge.
 
@@ -47,8 +47,8 @@ Most of the time I am forced to say no, this can wait. This is very different fr
 
 Working alone has been very challenging. I would only recommend it to people who are highly self motivated. Some days I just have to take a break as I can't maintain it.
 
-Still, overall I consider this time worth it for the learnings alone. It has given me a really good breadth of technical and business knowledge as I have been forced to do all aspects.
+Still, overall I consider this time to be worth it for the learnings alone. It has given me a really good breadth of technical and business knowledge as I have been forced to do all aspects.
 
 Fingers crossed my app doesn't fall in a heap and people think it is useful. 😅
 
-I'll announce the project in the future, but for now I want to soft launch and ramp up, so will not include any details today.
+I'll announce the project in the future, but for now I want to soft launch and slowly ramp up, so will not include any details today.
