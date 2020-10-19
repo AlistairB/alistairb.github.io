@@ -45,7 +45,7 @@ Most of the time I am forced to say no, this can wait. This is very different fr
 
 ## Conclusion
 
-Working alone has been very challenging. I would only recommend it to people who are highly self motivated. Some days I just have to take a break as I can't maintain it.
+Working alone has been very challenging. I would only recommend it to people who are highly self motivated. Some days I just have to take the day off as I can't maintain it.
 
 Still, overall I consider this time to be worth it for the learnings alone. It has given me a really good breadth of technical and business knowledge as I have been forced to do all aspects.
 
