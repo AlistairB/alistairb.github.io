@@ -23,7 +23,7 @@ We can then pattern match on this type to convert from our sum type into some ot
 colorToText :: Color -> Text
 colorToText Red   = "red"
 colorToText Green = "green"
-colorToText Blue  = "red"
+colorToText Blue  = "blue"
 ```
 
 This is all well and good, but we need to be careful that we have covered all the cases in the pattern match. For example, if we add a new color `Purple`, the function if not updated will be partial and throw an error on `colorToText Purple.` Thankfully with `-Wall` and `-Werror` enabled the original function will fail to compile as the pattern match is non-exhaustive.
