@@ -75,3 +75,5 @@ Also, would it allow the same data constructor combination to be used twice? You
 Would this feature be valuable to people?
 
 And is it feasible (without huge effort) to implement in GHC or as a GHC plugin?
+
+**Update:** Seems that [exhaustive](https://hackage.haskell.org/package/exhaustive) and [surjective](https://hackage.haskell.org/package/surjective) are solutions to this problem. Cool!
