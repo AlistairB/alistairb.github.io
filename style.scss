@@ -58,6 +58,7 @@ h2 {
 
 h3 {
   font-size: 20px;
+  color: #198754;
 }
 
 h4 {
@@ -81,6 +82,10 @@ a {
   &:hover, &:active {
     color: $link-color;
   }
+}
+
+small {
+  font-size: smaller;
 }
 
 em, i {
