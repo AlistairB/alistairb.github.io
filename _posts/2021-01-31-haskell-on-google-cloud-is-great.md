@@ -45,16 +45,28 @@ The equivilant of AWS Lambda on GCP is [cloud functions](https://cloud.google.co
 
 However, GCP has another service [cloud run](https://cloud.google.com/run) which could be thought of as 'AWS Lambda for Docker' and is a sweet spot for niche language like Haskell. You use it by providing a docker container that listens on a port for HTTP requests. You can integrate it with other GCP services to automatically make those requests, then your API just needs to decode and handle them.
 
-For example in my usage I have a pipeline of cloud run services connected with [pub sub](https://cloud.google.com/pubsub) (similar to AWS kinesis). I do not need any code to have new messages appears as HTTP requests to cloud run.
+For example in my usage I have a pipeline of cloud run services connected with [pub sub](https://cloud.google.com/pubsub) (similar to AWS kinesis). I do not need any code to have new messages appear as HTTP requests to cloud run.
 
-Additionally, these can simple be HTTP APIs, without using any of the integration glue that GCP offers. It includes a bunch of features around auto scaling as well.
+Additionally, these can simply be HTTP APIs, without using any of the integration glue that GCP offers. It includes a bunch of features around auto scaling as well.
 
 #### Kubernetes?
 
-Kubernetes sounds cool, but I think it is a complex solution for a complex problem. If you need this complexity Haskell will run nicely there as Haskell on any Docker based solution works great. However, if you don't need the power of kubernetes I think cloud run is the better, simpler choice.
+Kubernetes sounds cool, but I think it is a complex solution for a complex problem. If you need this complexity Haskell will work nicely, as Haskell on any Docker based solution works great. However, if you don't need the power of kubernetes I think cloud run is the better, simpler choice.
 
-### Complete Platform (with vendor lock in)
+### Comprehensive Platform (with vendor lock in)
 
-One point of difference between AWS and GCP, is AWS has less comprehensive 1st party (directly provided by AWS) offerings. At the same time, they have more extensive managed services. As such, there is a tendency to combine managed 3rd party tools and AWS services together.
+This one is based on my impressions and I find it hard to include clear examples. Nonetheless, I think that AWS has more of a strategy of supporting many 3rd party services to augment their simplistic core offerings. GCP has some 3rd party services, but more so I think they offer comprehensive first party products.
 
-GCP on the other hand, has a more comprehensive
+Why does this matter to Haskell?
+
+Haskell doesn't always have a great story around libraries to integrate with various vendor products and services. AWS pushes you more to use these due to limitations of their offerings. When using first party AWS or GCP products you don't have this problem thanks to `gogol` and `amazonka`. Thus I think the comprehensive platform they offer is quite valuable to Haskell apps as you know you have a great library story.
+
+### GCP is cheap
+
+Haskell people are mostly smaller shops where cost is factor.
+
+## GCP downsides
+
+### Deployment as code
+
+### It is less popular
