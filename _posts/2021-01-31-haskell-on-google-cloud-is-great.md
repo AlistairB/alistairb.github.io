@@ -11,9 +11,9 @@ Like many developers, I have a bunch of professional experience developing again
 
 However, I've always been in awe of Google products and wanted to try out Google Cloud Platform (GCP). I decided this would be a good opportunity to do so.
 
-tl;dr - Haskell on GCP is great. GCP vs AWS has various trade offs, however I think there a few reasons why GCP is great for Haskell.
+tl;dr - Haskell on GCP is great. GCP vs AWS has various trade offs, however I think there are a few reasons why GCP is great for Haskell.
 
-First lets look at using Haskell on AWS.
+First let's look at using Haskell on AWS.
 
 ## AWS + Haskell
 
@@ -29,11 +29,11 @@ Haskell works really well with Docker. You can build executables with [official 
 
 [AWS Lambda](https://aws.amazon.com/lambda/) allows you to run a function in the cloud without having to worry about how it is hosted, or how it integrates with other AWS services. With a bit of config you can configure a whole host of integrations or scaling options and AWS will make it happen.
 
-Lambda is somewhat contraversial amoung developers in my experience. It doesn't always live up to its motto of `Run code without thinking about servers or clusters`. Nonetheless, I think it does have a good niche and can be very useful.
+Lambda is somewhat controversial among developers in my experience. It doesn't always live up to its motto of `Run code without thinking about servers or clusters`. Nonetheless, I think it does have a good niche and can be very useful.
 
 Unfortunately Haskell is not directly supported by Lambda. It does support [custom runtimes](https://docs.aws.amazon.com/lambda/latest/dg/runtimes-custom.html) and there [are](https://hackage.haskell.org/package/serverless-haskell) [tools](https://theam.github.io/aws-lambda-haskell-runtime/) for using Haskell on Lambda.
 
-Addmittedly, I have not actually used these Haskell on Lambda solutions, but I believe they take more manual effort to set up and use. This to my mind takes away a lot of simplicity benefits of using Lambda.
+Admittedly, I have not actually used these Haskell on Lambda solutions, but I believe they take more manual effort to set up and use. This to my mind takes away a lot of the simplicity benefits of using Lambda.
 
 ## GCP + Haskell
 
@@ -49,7 +49,7 @@ GCP also has many good solutions with Docker and they work great with Haskell.
 
 ### Google Cloud Run
 
-The equivilant of AWS Lambda on GCP is [cloud functions](https://cloud.google.com/functions). Cloud functions has much of the same limitations as Lambda and additionally has no custom runtime concept. Haskell cannot run on cloud functions.
+The equivalent of AWS Lambda on GCP is [cloud functions](https://cloud.google.com/functions). Cloud functions has much of the same limitations as Lambda and additionally has no custom runtime concept. Haskell cannot run on cloud functions.
 
 However, GCP has another service, [cloud run](https://cloud.google.com/run), which could be thought of as `AWS Lambda for Docker` and is a sweet spot for a niche language like Haskell. You use it by providing a docker container that listens on a port for HTTP requests. You can integrate it with other GCP services to automatically make those requests, then your API just needs to decode (with help from `gogol`) and handle them.
 
@@ -65,7 +65,7 @@ Kubernetes sounds cool, but I think it is a complex solution for a complex probl
 
 This one is based on my impressions and I find it hard to include clear examples. Take this with a grain of salt 😉.
 
-GCP moreso than AWS seems to focus on fewer, more developed first party products. AWS on the other hand has more products, particularly more managed third party products. As such, on AWS you are probably going to suplement the AWS platform with these third party tools.
+GCP more so than AWS seems to focus on fewer, more developed first party products. AWS on the other hand has more products, particularly more managed third party products. As such, on AWS you are probably going to supplement the AWS platform with these third party tools.
 
 Why does this matter to Haskell?
 
@@ -89,9 +89,9 @@ So perhaps at this point you're really keen to start using Haskell on GCP. There
 
 ### Deployment As Code
 
-To me the killer feature of AWS is [Cloud Formation](https://aws.amazon.com/cloudformation). GCP has an equivelant in [Cloud Deployment Manager](https://cloud.google.com/deployment-manager), however it is (or was 1 year ago when I tried it) greatly inferior to cloud formation.
+To me the killer feature of AWS is [Cloud Formation](https://aws.amazon.com/cloudformation). GCP has an equivalent in [Cloud Deployment Manager](https://cloud.google.com/deployment-manager), however it is (or was 1 year ago when I tried it) greatly inferior to cloud formation.
 
-This isn't the end of the world though. It just means [terraform](https://www.terraform.io/) is essential on GCP. Terraform has a learning curve and is another abstration layer to learn, but does also bring some benefits with the complexity. Additionally, Google and Terraform themselves maintain the [terraform google 'provider'](https://registry.terraform.io/providers/hashicorp/google/latest) so it is quite high quality and up to date.
+This isn't the end of the world though. It just means [terraform](https://www.terraform.io/) is essential on GCP. Terraform has a learning curve and is another abstraction layer to learn, but does also bring some benefits with the complexity. Additionally, Google and Terraform themselves maintain the [terraform google 'provider'](https://registry.terraform.io/providers/hashicorp/google/latest) so it is quite high quality and up to date.
 
 ### It Is Less Popular
 
@@ -103,4 +103,4 @@ One nice thing is there are some [good free channels](https://cloud.google.com/c
 
 Haskell runs great in Docker and has great library support for AWS and GCP. As such, Haskell can work well on both of them.
 
-However, GCP has a few advantages, in particular cloud run is excellent for hosting APIs or gluing together pipelines with Haskell. I would strongly recommend considering it if you do Haskell, rather than just automatcially reaching for AWS 😀.
+However, GCP has a few advantages, in particular cloud run is excellent for hosting APIs or gluing together pipelines with Haskell. I would strongly recommend considering it if you do Haskell, rather than just automatically reaching for AWS 😀.
