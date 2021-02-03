@@ -81,7 +81,7 @@ One reason for this is most of their services include a free tier that you need 
 
 ### Deadpendency Architecture
 
-I am working on chopping out a nice skeleton architecture of how I deploy and use GCP with cloud run for [Deadpendency](https://deadpendency.com). I hope this will be valuable to others and lower the hurdle of using Haskell on GCP and cloud run. Coming soon™️ 😅.
+I am working on chopping out a nice skeleton architecture of how I deploy and use GCP for [Deadpendency](https://deadpendency.com). I hope this will be valuable to others and lower the hurdle of using Haskell on GCP and cloud run. Coming soon™️ 😅.
 
 ## GCP Downsides
 
