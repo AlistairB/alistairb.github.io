@@ -62,7 +62,7 @@ h3 {
 }
 
 h4 {
-  font-size: 20px;
+  font-size: 18px;
   color: $base-lighten-color;
 }
 
@@ -81,6 +81,7 @@ a {
   cursor: pointer;
   &:hover, &:active {
     color: $link-color;
+    text-decoration: underline;
   }
 }
 
