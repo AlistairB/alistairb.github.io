@@ -49,7 +49,7 @@ GCP also has many good solutions with Docker and they work great with Haskell.
 
 ### Google Cloud Run
 
-The equivalent of AWS Lambda on GCP is [cloud functions](https://cloud.google.com/functions). Cloud functions has much of the same limitations as Lambda and additionally has no custom runtime concept. Haskell cannot run on cloud functions.
+The equivalent of AWS Lambda on GCP is [cloud functions](https://cloud.google.com/functions). Cloud functions has much of the same limitations as Lambda and additionally has no custom runtime concept. Haskell cannot run on cloud functions, so a negative strike there.
 
 However, GCP has another service, [cloud run](https://cloud.google.com/run), which could be thought of as `AWS Lambda for Docker` and is a sweet spot for a niche language like Haskell. You use it by providing a docker container that listens on a port for HTTP requests. You can integrate it with other GCP services to automatically make those requests, then your API just needs to decode (with help from `gogol`) and handle them.
 
