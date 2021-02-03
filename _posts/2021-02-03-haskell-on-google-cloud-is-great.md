@@ -57,6 +57,8 @@ For example in my usage I have a pipeline of cloud run services connected with [
 
 Additionally, your cloud run services can simply be HTTP APIs, without using any of the integration glue that GCP offers. So it does some of what Lambda does while also being a simple solution to host standalone APIs.
 
+Cloud run is great, especially for niche languages like Haskell. Unlike AWS Lambda Haskell does not become a second class citizen.
+
 #### What About Kubernetes?
 
 Kubernetes sounds cool, but I think it is a complex solution for a complex problem. If you need this complexity Haskell will work nicely, of course. However, I think for most use cases cloud run is the better, simpler choice.
@@ -81,7 +83,7 @@ One reason for this is most of their services include a free tier that you need 
 
 ### Deadpendency Architecture
 
-I am working on chopping out a nice skeleton architecture of how I deploy and use GCP for [Deadpendency](https://deadpendency.com). I hope this will be valuable to others and lower the hurdle of using Haskell on GCP and cloud run. Coming soon™️ 😅.
+I am working on chopping out a nice skeleton architecture of how I deploy and use GCP for [Deadpendency](https://deadpendency.com). I hope this will be valuable to others and lower the barrier of using Haskell on GCP and cloud run. Coming soon™️ 😅.
 
 ## GCP Downsides
 
@@ -95,7 +97,7 @@ This isn't the end of the world though. It just means [terraform](https://www.te
 
 ### It Is Less Popular
 
-[GCP is growing faster than AWS](https://www.parkmycloud.com/blog/aws-vs-azure-vs-google-cloud-market-share/) in terms of percentage year on year revenue growth. However, AWS is currently 32% of the market, while GCP is only 7%. As Haskellers we know well the costs of using niche languages and products. It is manageable, but you can expect it harder to find answers to your random error message etc.
+[GCP is growing faster than AWS](https://www.parkmycloud.com/blog/aws-vs-azure-vs-google-cloud-market-share/) in terms of percentage year on year revenue growth. However, [AWS is currently 32% of the market, while GCP is only 7%](https://www.parkmycloud.com/blog/aws-vs-azure-vs-google-cloud-market-share/). As Haskellers we know well the costs of using niche languages and products. It is manageable, but you can expect it harder to find answers to your random error message etc.
 
 One nice thing is there are some [good free channels](https://cloud.google.com/community#home-support) to get help from GCP employees.
 
