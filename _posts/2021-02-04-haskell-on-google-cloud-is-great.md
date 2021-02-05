@@ -31,7 +31,7 @@ Haskell works really well with Docker. You can build executables with [official 
 
 Lambda is somewhat controversial among developers in my experience. It doesn't always live up to its motto of `Run code without thinking about servers or clusters`. Nonetheless, I think it does have a good niche and can be very useful.
 
-Unfortunately Haskell is not directly supported by Lambda. It does support [custom runtimes](https://docs.aws.amazon.com/lambda/latest/dg/runtimes-custom.html) and there [are](https://hackage.haskell.org/package/serverless-haskell) [tools](https://theam.github.io/aws-lambda-haskell-runtime/) for using Haskell on Lambda.
+Unfortunately Haskell is not directly supported by Lambda. It does support [custom runtimes](https://docs.aws.amazon.com/lambda/latest/dg/runtimes-custom.html) and [there](https://hackage.haskell.org/package/hal) [are](https://hackage.haskell.org/package/serverless-haskell) [tools](https://theam.github.io/aws-lambda-haskell-runtime/) for using Haskell on Lambda.
 
 Admittedly, I have not actually used these Haskell on Lambda solutions, but I believe they take more manual effort to set up and use. This to my mind takes away a lot of the simplicity benefits of using Lambda.
 
