@@ -21,9 +21,17 @@ Additionally, I think Haskell is the best general purpose programming language (
 
 Probably the most challenging part was building out a skeleton architecture to hang my code on. I decided to go with, even within Haskell, fairly advanced libraries of `[servant](https://docs.servant.dev/en/stable/)` and `[fused-effects](https://hackage.haskell.org/package/fused-effects)`.
 
-I spent a fair amount of time banging my head against a wall trying to get these libraries working nicely together. Part of this was a lack of Haskell knowledge as needed to skill up to.
+I spent a fair amount of time banging my head against a wall trying to get these libraries to work nicely together. Part of this was a lack of Haskell ability on my part. I had prepared as best I could, but Haskell is deep and I needed to learn more to work day to day with it. I was lucky enough to eventually find [an example](https://github.com/mitchellwrosen/hspolls) that marries these two libraries together, which was a life saver. I'm sure I would have gotten there eventually, but I was in a bit over my head at that point.
+
+Further more, Haskell is awesome, but like most language there is cruft and legacy to be avoided. Haskell has a standard library known as `base`, it has a fair amount of unsafe or unperformant functions as part of it. As such I went with an alternative standard library `relude` that builds on and improves `base`. On top of this, there are many core libraries that are not part of the standard library I wanted to use and have nice patterns around.
+
+And of course, I was [deploying to google cloud](/haskell-on-google-cloud-is-great) and so needed to figure out good patterns for that integration from Haskell.
+
+This setup effort was quite challenging, yet it only took about 2 weeks to have a good foundation of code to start building my business logic upon.
 
 ## Building It Out
+
+
 
 ## Launching
 
