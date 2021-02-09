@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Reflections On A Year Of A Haskell Startup"
+title: "Reflections On Creating A Haskell Startup"
 tags: [haskell, gcp]
 comments: true
 ---
@@ -47,13 +47,16 @@ data HappinessLevel =
   | Happy
   | SuperFantastic
   deriving (Show, Eq, Ord, Bounded, Enum, ToJSON, FromJSON) -- magic code generation
+
+-- ok not really magic, think 'convention over configuration'
+-- where you can have generated sane defaults, or customise if you like
 ```
 
-And personally I think it is quite beautiful to read and write.
+And personally I think Haskell is quite beautiful to read and write. #notbiased
 
 ### Parsing Libraries
 
-A lot of the logic of Deadpendency is parsing dependency files and hitting various APIs and parsing the responses. Haskell has many excellent parsing libraries, most notably [`aeson`](https://hackage.haskell.org/package/aeson) for usage with JSON.
+A lot of the logic of Deadpendency is parsing. Either parsing dependency files or parsing various API responses. Haskell has many excellent parsing libraries, most notably [`aeson`](https://hackage.haskell.org/package/aeson) for JSON.
 
 Why is this nice in Haskell? The 'monad' abstraction is excellent for dealing with code with a lot of failure conditions (ie. parsing) and avoids 'pyramid of doom' type code. Haskell worked out really well in this key area.
 
@@ -63,7 +66,7 @@ Why is this nice in Haskell? The 'monad' abstraction is excellent for dealing wi
 
 Another strong positive for writing Deadpendency was testing. Haskell has a lesser known style of testing libraries that do 'property based testing' (PBT).
 
-PBT allows you to write value generators for your data types, which you use to generate 100s or 1000s of test cases. Then, you run these generated values against some function and check that certain properties remain true.
+PBT allows you to write value generators for your data types, which you use to generate 100s or 1000s of test cases. Then, you run these generated values against some function and check that certain properties hold.
 
 For example, part of the Deadpendency logic is generating an HTML report at the end. I had some `toHtml :: Report -> HTML` function that I wanted to test. So I wrote a `fromHtml :: HTML -> Report` function where it goes the other way (ok writing that was pretty painful). Then my PBT test will generate 100s of `Report` values and check that `report == fromHtml (toHtml report)` (this is known as 'roundtrip testing'). With this single test I was able to find many edge case bugs with my HTML report generation logic.
 
@@ -83,8 +86,25 @@ Thankfully Haskell build tools have good support for loading a package from git.
 
 ### Refactoring Pain
 
+Deadpendency is relatively simple in what it does, but there is a lot of hidden complexity to the problem. Which is to say, it is like 99% of applications 😉. When developing it I was constantly realising I had modelled things a bit too simplistically and would need to refactor.
+
+Haskell has a smattering [of](https://hackage.haskell.org/package/apply-refact) [tools](https://hackage.haskell.org/package/retrie) that do refactoring, but they seem difficult to learn and don't seem to do the core refactorings that I want. Namely, move/rename module and rename function/variable name. As such I did it all manually with text search replace, or just change something and fix all the new compiler errors.
+
+The dream of course is nice refactoring built into an IDE.
+
+<img class="center-image" width="400" src="https://i.redd.it/dbdshzzflgd31.jpg" alt="Haskell had an IDE meme"/>
+
+(Stolen from [reddit](https://www.reddit.com/r/ProgrammerHumor/comments/cjtbfj/society_if_haskell_has_ide/))
+
+Having said that, it should be noted that Haskell does have an excellent IDE now in the form of [Haskell Language Server](https://github.com/haskell/haskell-language-server) (HLS). The momentum around the project is insane and I applaud the developers. One fixed pain point from HLS is it beautifully does auto imports now, which used to greatly contribute to the friction of working with Haskell.
+
 ### Waiting For GHC Updates To Be Usable
 
+This is mostly me complaining for the sake of it, but as someone pretty obsessed with new shiny versions of things and being obessed with Haskell, waiting for new GHC (GHC is the Haskell compiler) versions to be usable has been painful. There is a long tail of libraries and platforms that need to be updated before I can use a new GHC versions. Sometimes these updates can drag a lot.
+
+For example GHC 9 was just released, but I still haven't been able to upgrade to the GHC 8.10 yet which was first released in March 2020.
+
+<img class="center-image" width="400" src="https://i.imgflip.com/4xebid.jpg" alt="GHC releases meme"/>
 
 ## Launching
 
