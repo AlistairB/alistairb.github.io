@@ -51,21 +51,47 @@ data HappinessLevel =
 
 And personally I think it is quite beautiful to read and write.
 
-### Awesome Haskell Libraries
+### Parsing Libraries
 
-#### PBT
+A lot of the logic of Deadpendency is parsing dependency files and hitting various APIs and parsing the responses. Haskell has many excellent parsing libraries, most notably [`aeson`](https://hackage.haskell.org/package/aeson) for usage with JSON.
 
-#### Working With JSON
+Why is this nice in Haskell? The 'monad' abstraction is excellent for dealing with code with a lot of failure conditions (ie. parsing) and avoids 'pyramid of doom' type code. Haskell worked out really well in this key area.
+
+<img class="center-image" width="400" src="/images/hadouken.jpeg" alt="Pyramid of doom meme"/>
+
+### Testing
+
+Another strong positive for writing Deadpendency was testing. Haskell has a lesser known style of testing libraries that do 'property based testing' (PBT).
+
+PBT allows you to write value generators for your data types, which you use to generate 100s or 1000s of test cases. Then, you run these generated values against some function and check that certain properties remain true.
+
+For example, part of the Deadpendency logic is generating an HTML report at the end. I had some `toHtml :: Report -> HTML` function that I wanted to test. So I wrote a `fromHtml :: HTML -> Report` function where it goes the other way (ok writing that was pretty painful). Then my PBT test will generate 100s of `Report` values and check that `report == fromHtml (toHtml report)` (this is known as 'roundtrip testing'). With this single test I was able to find many edge case bugs with my HTML report generation logic.
+
+<img class="center-image" width="400" src="https://i.imgflip.com/4x9tqj.jpg" alt="Haskell with servant fused-effects is hard meme"/>
+
+PBT exists in some other languages, but it originated (I believe?) in Haskell so the libraries are excellent.
 
 ### Not Actively Maintained Libraries
+
+A big challenge of working with Haskell was the lack of well maintained libraries. Ironically, of the 75 (!) packages I depend upon 19 are flagged by Deadpendency as unhealthy. This means I often don't have the luxury of asking library maintainers to fix bugs. Even if I PR a fix, often that PR will be ignored for months.
+
+This I think is the reality of using a niche language like Haskell. To be clear, I do not think library developers owe me anything, but it is nonetheless a downside when compared to more popular languages.
+
+<img class="center-image" width="400" src="https://i.imgflip.com/4x9xjq.jpg" alt="Haskell not actively maintained meme"/>
+
+Thankfully Haskell build tools have good support for loading a package from git. This means you can PR some bug fix or feature and immediately use your fork to work around the problem.
 
 ### Refactoring Pain
 
 ### Waiting For GHC Updates To Be Usable
 
 
-
-
 ## Launching
+
+### Very few logic bugs
+
+### Too strict talking to external services
+
+### Memory issues
 
 ## Conclusion
