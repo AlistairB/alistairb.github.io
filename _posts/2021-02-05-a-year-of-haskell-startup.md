@@ -13,25 +13,23 @@ Since about 2016 I developed a strong ~~obsession~~ love of Haskell. Prior to le
 
 Haskell is challenging to learn, but extremely fun to write. For my own learning and pleasure, if my startup succeeds, I want to be doing Haskell.
 
-Additionally, I think Haskell is the best general purpose programming language (that you can use in production). In particular, Haskell excells at writing 'boring' business applications which is typically what I work on. Having said that, there are many reasons why a team may not want to select Haskell as their language such as challenges of skilling up the team. For a solo startup, where I already know Haskell to a reasonable degree, these are not issues so I don't need to worry.
-
-['Why Haskell For Production'](https://www.foxhound.systems/blog/why-haskell-for-production/) goes into more detail on the benefits Haskell offers.
+Additionally, I think Haskell is the best general purpose programming language (that you can use in production). In particular, Haskell excells at writing 'boring' business applications which is typically what I work on. ['Why Haskell For Production'](https://www.foxhound.systems/blog/why-haskell-for-production/) goes into more detail on the benefits Haskell offers.
 
 ## The Setup Phase
 
-Probably the most challenging part was building out a skeleton architecture to hang my code on. I decided to go with, even within Haskell, fairly advanced libraries of `[servant](https://docs.servant.dev/en/stable/)` and `[fused-effects](https://hackage.haskell.org/package/fused-effects)`.
+Probably the most challenging part was building out a skeleton architecture to hang my code on. I decided to go with, even within Haskell, fairly advanced libraries of [`servant`](https://docs.servant.dev/en/stable/) and [`fused-effects`](https://hackage.haskell.org/package/fused-effects).
 
 I spent a fair amount of time banging my head against a wall trying to get these libraries to work nicely together. Part of this was a lack of Haskell ability on my part. I had prepared as best I could, but Haskell is deep and I needed to learn more to work day to day with it. I was lucky enough to eventually find [an example](https://github.com/mitchellwrosen/hspolls) that marries these two libraries together, which was a life saver. I'm sure I would have gotten there eventually, but I was in a bit over my head at that point.
 
-Further more, Haskell is awesome, but like most language there is cruft and legacy to be avoided. Haskell has a standard library known as `base`, it has a fair amount of unsafe or unperformant functions as part of it. As such I went with an alternative standard library `relude` that builds on and improves `base`. On top of this, there are many core libraries that are not part of the standard library I wanted to use and have nice patterns around.
+Haskell is awesome, but like most language there is cruft and legacy to be avoided. Haskell has a standard library known as [`base`](https://hackage.haskell.org/package/base) which unfortunately has a fair amount of unsafe or unperformant functions included. As such I went with an alternative standard library [`relude`](https://hackage.haskell.org/package/relude) that builds on and improves `base`. On top of this, there are many core libraries that are not part of the standard library I wanted to use and have nice patterns around.
 
-And of course, I was [deploying to google cloud](/haskell-on-google-cloud-is-great) and so needed to figure out good patterns for that integration from Haskell.
+Additionally, I was [deploying to google cloud](/haskell-on-google-cloud-is-great) and so needed to figure out good patterns for that integration from Haskell.
 
 This setup effort was quite challenging, yet it only took about 2 weeks to have a good foundation of code to start building my business logic upon.
 
 ## Building It Out
 
-
+This is when it started to get really fun. I had my core patterns set out and I could focus on building a pipeline. I had the following phases (simplified)
 
 ## Launching
 
