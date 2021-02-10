@@ -7,6 +7,8 @@ comments: true
 
 Almost exactly one year ago I quit my job to attempt to create a Haskell startup as a solo developer. I had about 20 ideas, but eventually settled on the idea of dependency project health tracking with [Deadpendency](https://deadpendency.com/).
 
+Disclaimer: This blog post contains a bunch of memes. They are trying to be humourous, not accurrate 😉.
+
 ## Why Use Haskell?
 
 Since about 2016 I developed a strong ~~obsession~~ love of Haskell. Prior to learning Haskell, I was an experienced OO style developer but I didn't really know how to keep improving my raw programming ability. Haskell introduced me to the world of FP which has an almost infinite depth of concepts to learn that can be leveraged to improve code quality and application architecture.
@@ -138,10 +140,50 @@ For example GHC 9 was just released, but I still haven't been able to upgrade to
 
 ## Launching
 
-### Very few logic bugs
+So after about 8 months of work I was ready to start getting users. I slowly soft launched promoting it in a few small channels. How did my Haskell fair in prod?
 
-### Too strict talking to external services
+### Very Few Logic Bugs
+
+My core Haskell had very few logic bugs. This is because Haskell is very safe by default and I had opted into strict types that help catch edge cases.
+
+For example, I was using a lot of [`NonEmpty`](https://hackage.haskell.org/package/base-4.14.1.0/docs/Data-List-NonEmpty.html) lists which the compiler will gaurentee is not empty. To use them you must specifiy how to handle the empty case. ie. what do I do if Deadpendency can't find any dependencies to check?
+
+And of course, I had many tests as the compiler cannot find all the bugs.. yet..
+
+<img class="center-image" width="400" src="https://i.imgflip.com/4xevk6.jpg" alt="GHC releases meme"/>
+
+### Too Strict Parsing
+
+Haskell and its libraries have a philosophy of being explicit by default. In terms of parsing libraries, you tend to specify exactly the shape that you want to parse. I haven't done much parsing in non-FP lanugages, but I assume they are more permissive by default.
+
+This bit me, where it turned out that almost every assumption that I made about the various package registry APIs turned out to be incorrect. Especially [NPM](https://docs.npmjs.com/cli/v6/using-npm/registry).. For example, for an [NPM package](https://registry.npmjs.org/nomnom) you can get the latest version by getting `dist-tags -> latest`. What about a package that has no release? Well you get `dist-tags: {}`, except that it turns out that some packages don't even have `dist-tags` at all.
+
+I don't blame Haskell for this, I think explicit by default is the way to go. However, I quickly realised I would need to gracefully handle parse failures like these as there was so much variance in structure. It is also worth noting that this explicitness is [not a strike against statically typed lanugages](https://lexi-lambda.github.io/blog/2020/01/19/no-dynamic-type-systems-are-not-inherently-more-open/).
+
+<img class="center-image" width="400" src="https://i.imgflip.com/4xeytm.jpg" alt="Registry API are inconsistent meme"/>
 
 ### Memory issues
 
-## Conclusion
+The other big pain point was memory usage. I was using [Google Cloud Run](https://cloud.google.com/run) which is sort of like AWS Lambda where you can specify how much memory you need. To keep things cheap and to learn if my app needed a lot of memory, I went with the minimum of 256MiB. This amount seemed fine until I went to prod and Deadpendency was used on random repos.
+
+The core issue was.. NPM again had some rare packages that are huge, the [worst case](https://registry.npmjs.org/rendition) being 84MB uncompressed. It turns out that [`aeson`](https://hackage.haskell.org/package/aeson) will convert all the JSON into an [AST](https://en.wikipedia.org/wiki/Abstract_syntax_tree) first, before it then attempts to parse it to your type. This is fine when the JSON is small, or you are loading most of the contents of the JSON. In my case the AST apparently took about 20x the ammount of memory of the raw JSON, when I only needed a tiny amount of the data.
+
+Eventually I realised I should use a [library designed to parse in constant memory](https://hackage.haskell.org/package/json-stream) and all was well. I can parse the 84MB file and only see 84MB used. I could take this even further and stream the response, but for now it is working fine as is.
+
+<img class="center-image" width="400" src="https://i.imgflip.com/4xf4i0.jpg" alt="Registry API are inconsistent meme"/>
+
+#### Any Memory Issues Due To Laziness?
+
+As a lazy language, Haskell is known to have memory issues due to unevaluated expressions accumulating in unexpected ways. Thankfully I have avoided these issues so far.
+
+I did this by making my types strict by default with the [`StrictData`](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html) extension. Additionally, Haskell has lazy linked lists as the default list type. Instead I used a [strict list](https://hackage.haskell.org/package/vector) type.
+
+## Overall
+
+In a bit over a year I was able to build Deadpendency supporting 11 languages (and set up a bunch of cloud junk around it 😉). At this point I think it is actually pretty stable. I consider the project a big success.
+
+A huge part of this has been due to Haskell and its excellent ecosystem. Of course, I spent 4 years dabbling as I learnt it, but once skilled up it is super effective. I do believe anyone developer can learn Haskell and even learn it quickly in the right environment.
+
+What's next? I am working on promoting [Deadpendency](https://deadpendency.com/) and I hope to get more users. Have I spent too much time geeking out on Haskell and not enough time thinking about the idea? I guess we will see 😊. Either way, I have had enough fun and learnt enough that I will consider the experience worth it.
+
+<img class="center-image" width="400" src="https://i.imgflip.com/4xf7ou.jpg" alt="Hide the pain Haskell meme"/>
