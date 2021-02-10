@@ -186,4 +186,4 @@ A huge part of this has been due to Haskell and its excellent ecosystem. Of cour
 
 What's next? I am working on promoting [Deadpendency](https://deadpendency.com/) and I hope to get more users. Have I spent too much time geeking out on Haskell and not enough time thinking about the idea? I guess we will see 😊. Either way, I have had enough fun and learnt enough that I will consider the experience worth it.
 
-<img class="center-image" width="400" src="https://i.imgflip.com/4xf7ou.jpg" alt="Hide the pain Haskell meme"/>
+<img class="center-image" width="400" src="https://i.imgflip.com/4xf8xd.jpg" alt="Hide the pain Haskell meme"/>
