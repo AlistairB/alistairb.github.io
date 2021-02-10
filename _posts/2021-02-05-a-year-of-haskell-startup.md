@@ -84,11 +84,41 @@ This I think is the reality of using a niche language like Haskell. To be clear,
 
 Thankfully Haskell build tools have good support for loading a package from git. This means you can PR some bug fix or feature and immediately use your fork to work around the problem.
 
+### Compile Times.. Were Fine
+
+I thought I'd call this out as it is a common complaint I see around Haskell. I followed some [good advice](https://www.parsonsmatt.org/2019/11/27/keeping_compilation_fast.html) which kept compilation fast (aside from [one interesting edge case I resolved](https://twitter.com/AlistairBuzz/status/1253507016242294784)). So what are the numbers?
+
+#### Build dependencies from scratch
+
+Time: 13m41s
+
+This is compiling all application dependencies, which needs to be done before you can compile your application code. Rebuilding all from scratch rarely happens as both my dev machines and CI will cache and only rebuild what has changed.
+
+You do sometimes update a very core package which triggers a lot of dependent packages to recompile which can take a while. Although, I usually do dependency updates at the start of the day while I'm sipping my coffee, so usually don't notice.
+
+#### Build app from scratch (including tests)
+
+Time: 1m7s
+
+Likewise, due to caching a full recompilation rarely happens. As such, most code edits do not trigger many modules to be recompiled and it is fast.
+
+Additionally, Haskell has nice 'continuous compilation' tools that fire on save. Usually by the time I actually look at my terminal compilation is already done.
+
+#### Build Executable
+
+with [full optimisations](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/using-optimisation.html) (-02)
+
+Time: 3m30s
+
+This typically runs in CI. It runs in parallel with a host of other checks such as running my tests. Due to this, the time doesn't really impact the build + deploy time much.
+
+<img class="center-image" width="400" src="https://imgs.xkcd.com/comics/compiling.png" alt="Haskell code compiling meme"/>
+
 ### Refactoring Pain
 
 Deadpendency is relatively simple in what it does, but there is a lot of hidden complexity to the problem. Which is to say, it is like 99% of applications 😉. When developing it I was constantly realising I had modelled things a bit too simplistically and would need to refactor.
 
-Haskell has a smattering [of](https://hackage.haskell.org/package/apply-refact) [tools](https://hackage.haskell.org/package/retrie) that do refactoring, but they seem difficult to learn and don't seem to do the core refactorings that I want. Namely, move/rename module and rename function/variable name. As such I did it all manually with text search replace, or just change something and fix all the new compiler errors.
+Haskell has a couple of [good](https://hackage.haskell.org/package/apply-refact) [tools](https://hackage.haskell.org/package/retrie) that do refactoring, but they seem difficult to learn and apparently don't do the core refactorings that I want. Namely, move/rename module and rename function/variable name. As such I did it all manually with text search replace, or just change something and fix all the new compiler errors.
 
 The dream of course is nice refactoring built into an IDE.
 
@@ -98,9 +128,9 @@ The dream of course is nice refactoring built into an IDE.
 
 Having said that, it should be noted that Haskell does have an excellent IDE now in the form of [Haskell Language Server](https://github.com/haskell/haskell-language-server) (HLS). The momentum around the project is insane and I applaud the developers. One fixed pain point from HLS is it beautifully does auto imports now, which used to greatly contribute to the friction of working with Haskell.
 
-### Waiting For GHC Updates To Be Usable
+### Waiting For New GHC Versions To Be Usable
 
-This is mostly me complaining for the sake of it, but as someone pretty obsessed with new shiny versions of things and being obessed with Haskell, waiting for new GHC (GHC is the Haskell compiler) versions to be usable has been painful. There is a long tail of libraries and platforms that need to be updated before I can use a new GHC versions. Sometimes these updates can drag a lot.
+This is mostly me complaining for the sake of it, but as someone pretty obsessed with new shiny versions of things and obessed with Haskell, waiting for new GHC (GHC is the Haskell compiler) versions to be usable has been painful. There is a long tail of libraries and platforms that need to be updated before I can use a new GHC versions. Sometimes these updates can drag a lot.
 
 For example GHC 9 was just released, but I still haven't been able to upgrade to the GHC 8.10 yet which was first released in March 2020.
 
