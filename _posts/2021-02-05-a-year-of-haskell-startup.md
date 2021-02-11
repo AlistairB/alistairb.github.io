@@ -7,17 +7,17 @@ comments: true
 
 Almost exactly one year ago I quit my job to attempt to create a Haskell startup as a solo developer. I had about 20 ideas, but eventually settled on the idea of dependency project health tracking with [Deadpendency](https://deadpendency.com/).
 
-Disclaimer: This blog post contains a bunch of memes. They are trying to be humourous, not accurrate 😉.
+Disclaimer: This blog post contains a bunch of memes. They are trying to be humorous, not accurate 😉.
 
 ## Why Haskell?
 
-Since about 2016 I developed a strong ~~obsession~~ love of Haskell. Prior to learning Haskell, I was an experienced OO style developer but I didn't really know how to keep improving my raw programming ability. Haskell introduced me to the world of FP which has an almost infinite depth of concepts to learn, which do actually help improve code quality and application architecture.
+Since about 2016 I have had a strong ~~obsession~~ love of Haskell. Prior to learning Haskell, I was an experienced OO style developer but I didn't really know how to keep improving my raw programming ability. Haskell introduced me to the world of FP which has an almost infinite depth of concepts to learn, which do actually help improve code quality and application architecture.
 
 <img class="center-image" width="400" src="https://i.imgflip.com/4x9eeq.jpg" alt="I should learn functional programming meme"/>
 
 Haskell is challenging to learn, but extremely fun to write. For my own learning and pleasure, if my startup succeeds, I want to be doing Haskell.
 
-Additionally, I think Haskell is the best general purpose programming language (that you can use in production). In particular, Haskell excells at writing 'boring' business applications which is typically what I work on. ['Why Haskell For Production'](https://www.foxhound.systems/blog/why-haskell-for-production/) goes into more detail on the benefits Haskell offers.
+Additionally, I think Haskell is the best general purpose programming language (that you can use in production). In particular, Haskell excels at writing 'boring' business applications which is typically what I work on. ['Why Haskell For Production'](https://www.foxhound.systems/blog/why-haskell-for-production/) goes into more detail on the benefits Haskell offers.
 
 <img class="center-image" width="400" src="https://i.imgflip.com/4x9fwz.jpg" alt="Haskell is the best change my mind meme"/>
 
@@ -25,7 +25,7 @@ Additionally, I think Haskell is the best general purpose programming language (
 
 Probably the most challenging part was building out a skeleton architecture to hang my business logic on. I decided to go with, even within Haskell, fairly advanced libraries of [`servant`](https://docs.servant.dev/en/stable/) and [`fused-effects`](https://hackage.haskell.org/package/fused-effects).
 
-I spent a fair amount of time banging my head against a wall trying to get these libraries to work nicely together. This was a primarily from a lack of Haskell ability on my part. I had prepared as best I could, but Haskell is deep and I needed to learn more to work day to day with it. I was lucky enough to eventually find [an example](https://github.com/mitchellwrosen/hspolls) that marries these two libraries together, which was a life saver. I'm sure I would have gotten there eventually, but I was in a bit over my head at that point.
+I spent a fair amount of time banging my head against a wall trying to get these libraries to work nicely together. This was primarily from a lack of Haskell ability on my part. I had prepared as best I could, but Haskell is deep and I needed to learn more to work day to day with it. I was lucky enough to eventually find [an example](https://github.com/mitchellwrosen/hspolls) that marries these two libraries together, which was a life saver. I'm sure I would have gotten there eventually, but I was in a bit over my head at that point.
 
 <img class="center-image" width="400" src="https://i.imgflip.com/4x9j14.jpg" alt="Haskell with servant fused-effects is hard meme"/>
 
@@ -138,7 +138,7 @@ Having said that, it should be noted that Haskell does have an excellent IDE now
 
 ### Waiting For New GHC Versions To Be Usable
 
-This is mostly me complaining for the sake of it, but as someone pretty obsessed with new shiny versions of things and obessed with Haskell, waiting for new GHC (GHC is the Haskell compiler) versions to be usable has been painful. There is a long tail of libraries and platforms that need to be updated before I can use a new GHC versions. Sometimes these updates can drag a lot.
+This is mostly me complaining for the sake of it, but as someone pretty obsessed with new shiny versions of things and obsessed with Haskell, waiting for new GHC (GHC is the Haskell compiler) versions to be usable has been painful. There is a long tail of libraries and platforms that need to be updated before I can use a new GHC versions. Sometimes these updates can drag a lot.
 
 For example GHC 9 was just released, but I still haven't been able to upgrade to GHC 8.10 yet which was first released in March 2020.
 
@@ -152,7 +152,7 @@ So after about 8 months of work I was ready to start getting users. I slowly sof
 
 My core Haskell had very few logic bugs. This is because Haskell is very safe by default and I had opted into strict types that help catch edge cases.
 
-For example, I was using a lot of [`NonEmpty`](https://hackage.haskell.org/package/base-4.14.1.0/docs/Data-List-NonEmpty.html) lists which the compiler will gaurentee is not empty. To use them you must specifiy how to handle the empty case. ie. what do I do if Deadpendency can't find any dependencies to check?
+For example, I was using a lot of [`NonEmpty`](https://hackage.haskell.org/package/base-4.14.1.0/docs/Data-List-NonEmpty.html) lists which the compiler will guarantee is not empty. To use them you must specify how to handle the empty case. ie. what do I do if Deadpendency can't find any dependencies to check?
 
 And of course, I had many tests as the compiler cannot find all the bugs.. yet..
 
@@ -160,7 +160,7 @@ And of course, I had many tests as the compiler cannot find all the bugs.. yet..
 
 ### Too Strict Parsing
 
-Haskell and its libraries have a philosophy of being explicit by default. In terms of parsing libraries, you tend to specify exactly the shape that you want to parse. I haven't done much parsing in non-FP lanugages, but I assume they are more permissive by default.
+Haskell and its libraries have a philosophy of being explicit by default. In terms of parsing libraries, you tend to specify exactly the shape that you want to parse. I haven't done much parsing in non-FP languages, but I assume they are more permissive by default.
 
 This bit me, where it turned out that almost every assumption that I made about the various package registry APIs turned out to be incorrect. Especially [NPM](https://docs.npmjs.com/cli/v6/using-npm/registry).. For example, for an [NPM package](https://registry.npmjs.org/nomnom) you can get the latest version by getting `dist-tags -> latest`. What about a package that has no release? Well you get `dist-tags: {}`, except that it turns out that some packages don't even have `dist-tags` at all.
 
