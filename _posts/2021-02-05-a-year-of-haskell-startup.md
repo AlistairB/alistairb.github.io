@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Reflections On Creating A Haskell Startup"
+title: "Reflections On Using Haskell For My Startup"
 tags: [haskell, gcp]
 comments: true
 ---
@@ -9,9 +9,9 @@ Almost exactly one year ago I quit my job to attempt to create a Haskell startup
 
 Disclaimer: This blog post contains a bunch of memes. They are trying to be humourous, not accurrate 😉.
 
-## Why Use Haskell?
+## Why Haskell?
 
-Since about 2016 I developed a strong ~~obsession~~ love of Haskell. Prior to learning Haskell, I was an experienced OO style developer but I didn't really know how to keep improving my raw programming ability. Haskell introduced me to the world of FP which has an almost infinite depth of concepts to learn that can be leveraged to improve code quality and application architecture.
+Since about 2016 I developed a strong ~~obsession~~ love of Haskell. Prior to learning Haskell, I was an experienced OO style developer but I didn't really know how to keep improving my raw programming ability. Haskell introduced me to the world of FP which has an almost infinite depth of concepts to learn, which do actually help improve code quality and application architecture.
 
 <img class="center-image" width="400" src="https://i.imgflip.com/4x9eeq.jpg" alt="I should learn functional programming meme"/>
 
@@ -23,7 +23,7 @@ Additionally, I think Haskell is the best general purpose programming language (
 
 ## The Setup Phase
 
-Probably the most challenging part was building out a skeleton architecture to hang my code on. I decided to go with, even within Haskell, fairly advanced libraries of [`servant`](https://docs.servant.dev/en/stable/) and [`fused-effects`](https://hackage.haskell.org/package/fused-effects).
+Probably the most challenging part was building out a skeleton architecture to hang my business logic on. I decided to go with, even within Haskell, fairly advanced libraries of [`servant`](https://docs.servant.dev/en/stable/) and [`fused-effects`](https://hackage.haskell.org/package/fused-effects).
 
 I spent a fair amount of time banging my head against a wall trying to get these libraries to work nicely together. This was a primarily from a lack of Haskell ability on my part. I had prepared as best I could, but Haskell is deep and I needed to learn more to work day to day with it. I was lucky enough to eventually find [an example](https://github.com/mitchellwrosen/hspolls) that marries these two libraries together, which was a life saver. I'm sure I would have gotten there eventually, but I was in a bit over my head at that point.
 
@@ -33,13 +33,13 @@ Haskell is awesome, but like most languages there is cruft and legacy to be avoi
 
 Additionally, I was [deploying to google cloud](/haskell-on-google-cloud-is-great) and so needed to figure out good patterns for that integration from Haskell.
 
-This setup effort was quite challenging, yet it only took about 2 weeks to have a good foundation of code to start building my business logic upon.
+This setup effort was quite challenging. I spent most of it squinting at compiler errors. Yet it only took about 2 weeks to have a good foundation of code to start building my business logic upon.
 
 ## Building It Out
 
 This is when it started to get really fun. I had my core patterns set out and I could focus on building a pipeline. The day in day out of writing out my logic as small pure functions that I composed together was very nice.
 
-Haskell has such impressive auto-magic code generation techniques that you spend much more time focused on the interesting logic of your application not boilerplate.
+Haskell has such impressive auto-magic code generation techniques that you spend much more time focused on the interesting logic of your application rather than boilerplate.
 
 ```haskell
 data HappinessLevel =
@@ -47,7 +47,7 @@ data HappinessLevel =
   | Sad
   | Average
   | Happy
-  | SuperFantastic
+  | HaskellDeveloper
   deriving (Show, Eq, Ord, Bounded, Enum, ToJSON, FromJSON) -- magic code generation
 
 -- ok not really magic, think 'convention over configuration'
@@ -78,7 +78,7 @@ PBT exists in some other languages, but it originated (I believe?) in Haskell so
 
 ### Not Actively Maintained Libraries
 
-A big challenge of working with Haskell was the lack of well maintained libraries. Ironically, of the 75 (!) packages I depend upon 19 are flagged by Deadpendency as unhealthy. This means I often don't have the luxury of asking library maintainers to fix bugs. Even if I PR a fix, often that PR will be ignored for months.
+A big challenge of working with Haskell was the lack of well maintained libraries. Ironically, of the 75 (!) packages I depend upon 19 are flagged by Deadpendency as unhealthy. This means I often don't have the luxury of asking library maintainers to fix bugs. Even if I PR a fix, sometimes that PR will be ignored for months.
 
 This I think is the reality of using a niche language like Haskell. To be clear, I do not think library developers owe me anything, but it is nonetheless a downside when compared to more popular languages.
 
@@ -90,37 +90,43 @@ Thankfully Haskell build tools have good support for loading a package from git.
 
 I thought I'd call this out as it is a common complaint I see around Haskell. I followed some [good advice](https://www.parsonsmatt.org/2019/11/27/keeping_compilation_fast.html) which kept compilation fast (aside from [one interesting edge case I resolved](https://twitter.com/AlistairBuzz/status/1253507016242294784)). So what are the numbers?
 
-#### Build dependencies from scratch
+* Number of modules (Haskell source files) - 509
+* Number of lines of Haskell - 20090
+* Number of dependencies - 75
 
-Time: 13m41s
+#### Compile dependencies from scratch
+
+Time: 17m44s
 
 This is compiling all application dependencies, which needs to be done before you can compile your application code. Rebuilding all from scratch rarely happens as both my dev machines and CI will cache and only rebuild what has changed.
 
 You do sometimes update a very core package which triggers a lot of dependent packages to recompile which can take a while. Although, I usually do dependency updates at the start of the day while I'm sipping my coffee, so usually don't notice.
 
-#### Build app from scratch (including tests)
+#### Compile app (including tests) in development
 
-Time: 1m7s
+Time: 1m1s
 
 Likewise, due to caching a full recompilation rarely happens. As such, most code edits do not trigger many modules to be recompiled and it is fast.
 
 Additionally, Haskell has nice 'continuous compilation' tools that fire on save. Usually by the time I actually look at my terminal compilation is already done.
 
-#### Build Executable
+#### Compile app for deployment
 
 with [full optimisations](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/using-optimisation.html) (-02)
 
-Time: 3m30s
+Time: 2m53s
 
 This typically runs in CI. It runs in parallel with a host of other checks such as running my tests. Due to this, the time doesn't really impact the build + deploy time much.
 
-<img class="center-image" width="400" src="https://imgs.xkcd.com/comics/compiling.png" alt="Haskell code compiling meme"/>
+<img class="center-image" width="400" src="https://i.imgflip.com/4xp4zu.jpg" alt="Compile times meme"/>
 
 ### Refactoring Pain
 
 Deadpendency is relatively simple in what it does, but there is a lot of hidden complexity to the problem. Which is to say, it is like 99% of applications 😉. When developing it I was constantly realising I had modelled things a bit too simplistically and would need to refactor.
 
-Haskell has a couple of [good](https://hackage.haskell.org/package/apply-refact) [tools](https://hackage.haskell.org/package/retrie) that do refactoring, but they seem difficult to learn and apparently don't do the core refactorings that I want. Namely, move/rename module and rename function/variable name. As such I did it all manually with text search replace, or just change something and fix all the new compiler errors.
+Haskell is very safe to refactor thanks to the type safety the compiler brings, which is probably the most important thing. However, Haskell does not have great tools to help with refactoring, at least in terms of the restructuring changes I kept making. The [existing](https://hackage.haskell.org/package/apply-refact) [tools](https://hackage.haskell.org/package/retrie) seem more geared towards complex rewriting of common code, not restructuring modules or renaming identifiers.
+
+As such I did it all manually with text search replace, or just change something and fix all the new compiler errors.
 
 The dream of course is nice refactoring built into an IDE.
 
@@ -128,19 +134,19 @@ The dream of course is nice refactoring built into an IDE.
 
 (Stolen from [reddit](https://www.reddit.com/r/ProgrammerHumor/comments/cjtbfj/society_if_haskell_has_ide/))
 
-Having said that, it should be noted that Haskell does have an excellent IDE now in the form of [Haskell Language Server](https://github.com/haskell/haskell-language-server) (HLS). The momentum around the project is insane and I applaud the developers. One fixed pain point from HLS is it beautifully does auto imports now, which used to greatly contribute to the friction of working with Haskell.
+Having said that, it should be noted that Haskell does have an excellent IDE now in the form of [Haskell Language Server](https://github.com/haskell/haskell-language-server) (HLS). The momentum around the project is insane and I applaud the developers. One fixed pain point from HLS is it does auto imports now, which used to greatly contribute to the friction of working with Haskell.
 
 ### Waiting For New GHC Versions To Be Usable
 
 This is mostly me complaining for the sake of it, but as someone pretty obsessed with new shiny versions of things and obessed with Haskell, waiting for new GHC (GHC is the Haskell compiler) versions to be usable has been painful. There is a long tail of libraries and platforms that need to be updated before I can use a new GHC versions. Sometimes these updates can drag a lot.
 
-For example GHC 9 was just released, but I still haven't been able to upgrade to the GHC 8.10 yet which was first released in March 2020.
+For example GHC 9 was just released, but I still haven't been able to upgrade to GHC 8.10 yet which was first released in March 2020.
 
-<img class="center-image" width="600" src="https://i.imgflip.com/4xebid.jpg" alt="GHC releases meme"/>
+<img class="center-image" width="500" src="https://i.imgflip.com/4xebid.jpg" alt="GHC releases meme"/>
 
 ## Launching
 
-So after about 8 months of work I was ready to start getting users. I slowly soft launched promoting it in a few small channels. How did my Haskell fair in prod?
+So after about 8 months of work I was ready to start getting users. I slowly soft launched, promoting it in a few small channels. How did my Haskell fair in prod?
 
 ### Very Few Logic Bugs
 
@@ -164,9 +170,9 @@ I don't blame Haskell for this, I think explicit by default is the way to go. Ho
 
 ### Memory issues
 
-The other big pain point was memory usage. I was using [Google Cloud Run](https://cloud.google.com/run) which is sort of like AWS Lambda where you can specify how much memory you need. To keep things cheap and to learn if my app needed a lot of memory, I went with the minimum of 256MiB. This amount seemed fine until I went to prod and Deadpendency was used on random repos.
+The other big pain point was memory usage. I was using [Google Cloud Run](https://cloud.google.com/run) which is sort of like AWS Lambda where you can specify how much memory you need. To keep things cheap and to learn if my app needed a lot of memory, I went with the minimum of 256MB. This amount seemed fine until I went to prod and Deadpendency was trying to check a wider variety of packages.
 
-The core issue was.. NPM again had some rare packages that are huge, the [worst case](https://registry.npmjs.org/rendition) being 84MB uncompressed. It turns out that [`aeson`](https://hackage.haskell.org/package/aeson) will convert all the JSON into an [AST](https://en.wikipedia.org/wiki/Abstract_syntax_tree) first, before it then attempts to parse it to your type. This is fine when the JSON is small, or you are loading most of the contents of the JSON. In my case the AST apparently took about 20x the ammount of memory of the raw JSON, when I only needed a tiny amount of the data.
+The core issue was.. NPM again had some rare packages that are huge, the [worst case](https://registry.npmjs.org/rendition) being 84MB uncompressed. It turns out that [`aeson`](https://hackage.haskell.org/package/aeson) will convert all the JSON into an [AST](https://en.wikipedia.org/wiki/Abstract_syntax_tree) first, before it then attempts to parse it to your type. This is fine when the JSON is small, or you are loading most of the contents of the JSON. In my case the AST apparently took about 20x the amount of memory of the raw JSON, when I only needed a tiny amount of the data.
 
 Eventually I realised I should use a [library designed to parse in constant memory](https://hackage.haskell.org/package/json-stream) and all was well. I can parse the 84MB file and only see 84MB used. I could take this even further and stream the response, but for now it is working fine as is.
 
@@ -186,4 +192,4 @@ A huge part of this has been due to Haskell and its excellent ecosystem. Of cour
 
 What's next? I am working on promoting [Deadpendency](https://deadpendency.com/) and I hope to get more users. Have I spent too much time geeking out on Haskell and not enough time thinking about the idea? I guess we will see 😊. Either way, I have had enough fun and learnt enough that I will consider the experience worth it.
 
-<img class="center-image" width="400" src="https://i.imgflip.com/4xf8xd.jpg" alt="Hide the pain Haskell meme"/>
+<img class="center-image" width="400" src="https://i.imgflip.com/4xp9kk.jpg" alt="Hide the pain Haskell meme"/>
