@@ -136,7 +136,7 @@ This is mostly me complaining for the sake of it, but as someone pretty obsessed
 
 For example GHC 9 was just released, but I still haven't been able to upgrade to the GHC 8.10 yet which was first released in March 2020.
 
-<img class="center-image" width="400" src="https://i.imgflip.com/4xebid.jpg" alt="GHC releases meme"/>
+<img class="center-image" width="600" src="https://i.imgflip.com/4xebid.jpg" alt="GHC releases meme"/>
 
 ## Launching
 
