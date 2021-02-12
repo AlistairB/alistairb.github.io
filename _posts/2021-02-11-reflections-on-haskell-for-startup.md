@@ -117,9 +117,9 @@ Additionally, Haskell has nice 'continuous compilation' tools that fire on save.
 
 with [full optimisations](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/using-optimisation.html) (-02)
 
-Time: 2m53s
+Time: 2m53s on dev box, 5m38s on CI agent
 
-This typically runs in CI. It runs in parallel with a host of other checks such as running my tests. Due to this, the time doesn't really impact the build + deploy time much.
+This typically runs in CI. It runs in parallel with a host of other checks such as running my tests which take a few minutes. Due to this, the time doesn't really impact the build + deploy time too much.
 
 <img class="center-image" width="400" src="https://i.imgflip.com/4xp4zu.jpg" alt="Compile times meme"/>
 
