@@ -119,7 +119,7 @@ with [full optimisations](https://downloads.haskell.org/~ghc/latest/docs/html/us
 
 Time: 2m53s
 
-This typically runs in CI. It runs in parallel with a host of other checks such as running my tests which take a few minutes. Due to this, the time doesn't really impact the build + deploy time too much.
+This typically runs in CI. It runs in parallel with a host of other checks such as running my tests, which also take a few minutes. Due to this, the time doesn't really impact the build + deploy time too much.
 
 <img class="center-image" width="400" src="https://i.imgflip.com/4xp4zu.jpg" alt="Compile times meme"/>
 
