@@ -7,7 +7,9 @@ comments: true
 
 Almost exactly one year ago I quit my job to attempt to create a Haskell startup as a solo developer. I had about 20 ideas, but eventually settled on the idea of dependency project health tracking with [Deadpendency](https://deadpendency.com/).
 
-Disclaimer: This blog post contains a bunch of memes. They are trying to be humorous, not accurate 😉.
+This post describes the experience and evaluates Haskell and its ecosystem.
+
+<small>Disclaimer: This blog post contains a bunch of memes. They are trying to be humorous, not accurate 😉.</small>
 
 ## Why Haskell?
 
@@ -160,17 +162,17 @@ And of course, I had many tests as the compiler cannot find all the bugs.. yet..
 
 ### Too Strict Parsing
 
-Haskell and its libraries have a philosophy of being explicit by default. In terms of parsing libraries, you tend to specify exactly the shape that you want to parse. I haven't done much parsing in non-FP languages, but I assume they are more permissive by default.
+A big pain point was the package registry APIs had a lot of inconsistency on how they are structured. Especially [NPM](https://docs.npmjs.com/cli/v6/using-npm/registry).. For example, for an [NPM package](https://registry.npmjs.org/nomnom) you can get the latest version by getting `dist-tags -> latest`. What about a package that has no release? Well you get `dist-tags: {}`, except that it turns out that some packages don't even have the `dist-tags` key at all.
 
-This bit me, where it turned out that almost every assumption that I made about the various package registry APIs turned out to be incorrect. Especially [NPM](https://docs.npmjs.com/cli/v6/using-npm/registry).. For example, for an [NPM package](https://registry.npmjs.org/nomnom) you can get the latest version by getting `dist-tags -> latest`. What about a package that has no release? Well you get `dist-tags: {}`, except that it turns out that some packages don't even have `dist-tags` at all.
+I quickly realised I would need to gracefully handle parse failures like these as there was so much variance in structure.
 
-I don't blame Haskell for this, I think explicit by default is the way to go. However, I quickly realised I would need to gracefully handle parse failures like these as there was so much variance in structure. It is also worth noting that this explicitness is [not a strike against statically typed lanugages](https://lexi-lambda.github.io/blog/2020/01/19/no-dynamic-type-systems-are-not-inherently-more-open/).
+This issue sounds like a classic argument against static typing, but [dynamic type systems are not inherently better at dealing with unexpected data](https://lexi-lambda.github.io/blog/2020/01/19/no-dynamic-type-systems-are-not-inherently-more-open/). Dynamicly typed languages may more gracefully ignore, or delay the failure, but I prefer the Haskell philosophy of immediately failing when data is an unexpected shape.
 
 <img class="center-image" width="400" src="https://i.imgflip.com/4xeytm.jpg" alt="Registry API are inconsistent meme"/>
 
 ### Memory issues
 
-The other big pain point was memory usage. I was using [Google Cloud Run](https://cloud.google.com/run) which is sort of like AWS Lambda where you can specify how much memory you need. To keep things cheap and to learn if my app needed a lot of memory, I went with the minimum of 256MB. This amount seemed fine until I went to prod and Deadpendency was trying to check a wider variety of packages.
+The other big pain point was memory usage. I was using [Google Cloud Run](https://cloud.google.com/run) which is sort of like AWS Lambda where you can specify how much memory you need. To keep things cheap and to better understand the memory needs of my app, I went with the minimum of 256MB. This amount seemed fine until I went to prod and Deadpendency was trying to check a wider variety of packages.
 
 The core issue was.. NPM again had some rare packages that are huge, the [worst case](https://registry.npmjs.org/rendition) being 84MB uncompressed. It turns out that [`aeson`](https://hackage.haskell.org/package/aeson) will convert all the JSON into an [AST](https://en.wikipedia.org/wiki/Abstract_syntax_tree) first, before it then attempts to parse it to your type. This is fine when the JSON is small, or you are loading most of the contents of the JSON. In my case the AST apparently took about 20x the amount of memory of the raw JSON, when I only needed a tiny amount of the data.
 
@@ -188,7 +190,7 @@ I did this by making my types strict by default with the [`StrictData`](https://
 
 In a bit over a year I was able to build Deadpendency supporting 11 languages (and set up a bunch of cloud junk around it 😉). At this point I think it is actually pretty stable. I consider the project a big success.
 
-A huge part of this has been due to Haskell and its excellent ecosystem. Of course, I spent 4 years dabbling as I learnt it, but once skilled up it is super effective. I do believe anyone developer can learn Haskell and even learn it quickly in the right environment.
+A huge part of this has been due to Haskell and its excellent ecosystem. Of course, I spent 4 years dabbling as I learnt it, but once skilled up it is super effective. I do believe any developer can learn Haskell and even learn it quickly in the right environment.
 
 What's next? I am working on promoting [Deadpendency](https://deadpendency.com/) and I hope to get more users. Have I spent too much time geeking out on Haskell and not enough time thinking about the idea? I guess we will see 😊. Either way, I have had enough fun and learnt enough that I will consider the experience worth it.
 
