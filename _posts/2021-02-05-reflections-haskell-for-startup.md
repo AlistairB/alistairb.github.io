@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Reflections On Using Haskell For My Startup"
-tags: [haskell, gcp]
+tags: [haskell]
 comments: true
 ---
 
@@ -162,7 +162,7 @@ And of course, I had many tests as the compiler cannot find all the bugs.. yet..
 
 ### Too Strict Parsing
 
-A big pain point was the package registry APIs had a lot of inconsistency on how they are structured. Especially [NPM](https://docs.npmjs.com/cli/v6/using-npm/registry).. For example, for an [NPM package](https://registry.npmjs.org/nomnom) you can get the latest version by getting `dist-tags -> latest`. What about a package that has no release? Well you get `dist-tags: {}`, except that it turns out that some packages don't even have the `dist-tags` key at all.
+A big pain point was the package registry APIs had a lot of inconsistency on how they are structured (especially [NPM](https://docs.npmjs.com/cli/v6/using-npm/registry)). For example, for an [NPM package](https://registry.npmjs.org/nomnom) you can get the latest version by getting `dist-tags -> latest`. What about a package that has no release? Well you get `dist-tags: {}`, except that it turns out that some packages don't even have the `dist-tags` key at all.
 
 I quickly realised I would need to gracefully handle parse failures like these as there was so much variance in structure.
 
@@ -174,7 +174,7 @@ This issue sounds like a classic argument against static typing, but [dynamic ty
 
 The other big pain point was memory usage. I was using [Google Cloud Run](https://cloud.google.com/run) which is sort of like AWS Lambda where you can specify how much memory you need. To keep things cheap and to better understand the memory needs of my app, I went with the minimum of 256MB. This amount seemed fine until I went to prod and Deadpendency was trying to check a wider variety of packages.
 
-The core issue was.. NPM again had some rare packages that are huge, the [worst case](https://registry.npmjs.org/rendition) being 84MB uncompressed. It turns out that [`aeson`](https://hackage.haskell.org/package/aeson) will convert all the JSON into an [AST](https://en.wikipedia.org/wiki/Abstract_syntax_tree) first, before it then attempts to parse it to your type. This is fine when the JSON is small, or you are loading most of the contents of the JSON. In my case the AST apparently took about 20x the amount of memory of the raw JSON, when I only needed a tiny amount of the data.
+The core issue was.. NPM again had some rare packages that have huge JSON payloads, the [worst case](https://registry.npmjs.org/rendition) being 84MB uncompressed. It turns out that [`aeson`](https://hackage.haskell.org/package/aeson) will convert all the JSON into an [AST](https://en.wikipedia.org/wiki/Abstract_syntax_tree) first, before it then attempts to parse it to your type. This is fine when the JSON is small, or you are loading most of the contents of the JSON. In my case the AST apparently took about 20x the amount of memory of the raw JSON, when I only needed a tiny amount of the data.
 
 Eventually I realised I should use a [library designed to parse in constant memory](https://hackage.haskell.org/package/json-stream) and all was well. I can parse the 84MB file and only see 84MB used. I could take this even further and stream the response, but for now it is working fine as is.
 
