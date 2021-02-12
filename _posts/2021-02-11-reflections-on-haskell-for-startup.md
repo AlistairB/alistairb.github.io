@@ -10,7 +10,7 @@ Almost exactly one year ago I quit my job to attempt to create a Haskell startup
 
 This post describes the experience and evaluates Haskell and its ecosystem.
 
-<small>Disclaimer: This blog post contains a bunch of memes. They are trying to be humorous, not accurate 😉.</small>
+<small>Disclaimer: This blog post contains a bunch of memes. They are trying to be humorous, not accurate or fair 😉.</small>
 
 ## Why Haskell?
 
