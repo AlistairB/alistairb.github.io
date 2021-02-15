@@ -6,7 +6,7 @@ hidden: true
 comments: true
 ---
 
-Almost exactly one year ago I quit my job to attempt to create a Haskell startup as a solo developer. I had about 20 ideas, but eventually settled on the idea of dependency project health tracking with [Deadpendency](https://deadpendency.com/).
+Almost exactly one year ago I quit my job to create a Haskell startup as a solo developer. I had about 20 ideas, but eventually settled on the idea of dependency project health tracking with [Deadpendency](https://deadpendency.com/).
 
 This post describes the experience and evaluates Haskell and its ecosystem.
 
@@ -14,7 +14,7 @@ This post describes the experience and evaluates Haskell and its ecosystem.
 
 ## Why Haskell?
 
-Since about 2016 I have had a strong ~~obsession~~ love of Haskell. Prior to learning Haskell, I was an experienced OO style developer but I didn't really know how to keep improving my raw programming ability. Haskell introduced me to the world of FP which has an almost infinite depth of concepts to learn, which do actually help improve code quality and application architecture.
+Since about 2016 I have had a strong ~~obsession~~ love of Haskell. Prior to learning Haskell, I was an experienced OO style developer but I didn't really know how to keep improving my raw programming ability. Haskell introduced me to the world of functional programming (FP) which has an almost infinite depth of concepts to learn, which do actually help improve code quality and application architecture.
 
 <img class="center-image" width="400" src="https://i.imgflip.com/4x9eeq.jpg" alt="I should learn functional programming meme"/>
 
@@ -38,7 +38,7 @@ Additionally, I was [deploying to google cloud](/haskell-on-google-cloud-is-grea
 
 This setup effort was quite challenging. I spent most of it squinting at compiler errors. Yet it only took about 2 weeks to have a good foundation of code to start building my business logic upon.
 
-## Building It Out
+## Building it Out
 
 This is when it started to get really fun. I had my core patterns set out and I could focus on building a pipeline. The day in day out of writing out my logic as small pure functions that I composed together was very nice.
 
@@ -69,7 +69,7 @@ Why is this nice in Haskell? The 'monad' abstraction is excellent for dealing wi
 
 ### Testing
 
-Another strong positive for writing Deadpendency was testing. Haskell has a lesser known style of testing libraries that do 'property based testing' (PBT).
+Another strong positive for writing Deadpendency was testing. Haskell has a lesser-known style of testing libraries that do 'property based testing' (PBT).
 
 PBT allows you to write value generators for your data types, which you use to generate 100s or 1000s of test cases. Then, you run these generated values against some function and check that certain properties hold.
 
@@ -81,7 +81,7 @@ PBT exists in some other languages, but it originated (I believe?) in Haskell so
 
 ### Not Actively Maintained Libraries
 
-A big challenge of working with Haskell was the lack of well maintained libraries. Ironically, of the 75 (!) packages I depend upon 19 are flagged by Deadpendency as unhealthy. This means I often don't have the luxury of asking library maintainers to fix bugs. Even if I PR a fix, sometimes that PR will be ignored for months.
+A big challenge of working with Haskell was the lack of well-maintained libraries. Ironically, of the 75 (!) packages I depend upon 19 are flagged by Deadpendency as unhealthy. This means I often don't have the luxury of asking library maintainers to fix bugs. Even if I PR a fix, sometimes that PR will be ignored for months.
 
 This I think is the reality of using a niche language like Haskell. To be clear, I do not think library developers owe me anything, but it is nonetheless a downside when compared to more popular languages.
 
@@ -139,9 +139,9 @@ The dream of course is nice refactoring built into an IDE.
 
 Having said that, it should be noted that Haskell does have an excellent IDE now in the form of [Haskell Language Server](https://github.com/haskell/haskell-language-server) (HLS). The momentum around the project is insane and I applaud the developers. One fixed pain point from HLS is it does auto imports now, which used to greatly contribute to the friction of working with Haskell.
 
-### Waiting For New GHC Versions To Be Usable
+### Waiting for New GHC Versions to be Usable
 
-This is mostly me complaining for the sake of it, but as someone pretty obsessed with new shiny versions of things and obsessed with Haskell, waiting for new GHC (GHC is the Haskell compiler) versions to be usable has been painful. There is a long tail of libraries and platforms that need to be updated before I can use a new GHC versions. Sometimes these updates can drag a lot.
+This is mostly me complaining for the sake of it, but as someone pretty obsessed with both new shiny versions of things and Haskell, waiting for new GHC (GHC is the Haskell compiler) versions to be usable has been painful. There is a long tail of libraries and platforms that need to be updated before I can use a new GHC version. Sometimes these updates can drag a lot.
 
 For example GHC 9 was just released, but I still haven't been able to upgrade to GHC 8.10 yet which was first released in March 2020.
 
@@ -167,7 +167,7 @@ A big pain point was the package registry APIs had a lot of inconsistency on how
 
 I quickly realised I would need to gracefully handle parse failures like these as there was so much variance in structure.
 
-This issue sounds like a classic argument against static typing, but [dynamic type systems are not inherently better at dealing with unexpected data](https://lexi-lambda.github.io/blog/2020/01/19/no-dynamic-type-systems-are-not-inherently-more-open/). Dynamicly typed languages may more gracefully ignore, or delay the failure, but I prefer the Haskell philosophy of immediately failing when data is an unexpected shape.
+This issue sounds like a classic argument against static typing, but [dynamic type systems are not inherently better at dealing with unexpected data](https://lexi-lambda.github.io/blog/2020/01/19/no-dynamic-type-systems-are-not-inherently-more-open/). Dynamically typed languages may more gracefully ignore, or delay the failure, but I prefer the Haskell philosophy of immediately failing when data is an unexpected shape.
 
 <img class="center-image" width="400" src="https://i.imgflip.com/4xeytm.jpg" alt="Registry API are inconsistent meme"/>
 
@@ -181,7 +181,7 @@ Eventually I realised I should use a [library designed to parse in constant memo
 
 <img class="center-image" width="400" src="https://i.imgflip.com/4xf4i0.jpg" alt="Registry API are inconsistent meme"/>
 
-#### Any Memory Issues Due To Laziness?
+#### Any Memory Issues Due to Laziness?
 
 As a lazy language, Haskell is known to have memory issues due to unevaluated expressions accumulating in unexpected ways. Thankfully I have avoided these issues so far.
 
@@ -191,7 +191,7 @@ I did this by making my types strict by default with the [`StrictData`](https://
 
 In a bit over a year I was able to build Deadpendency supporting 11 languages (and set up a bunch of cloud junk around it 😉). At this point I think it is actually pretty stable. I consider the project a big success.
 
-A huge part of this has been due to Haskell and its excellent ecosystem. Of course, I spent 4 years dabbling as I learnt it, but once skilled up it is super effective. I do believe any developer can learn Haskell and even learn it quickly in the right environment.
+A huge part of this has been due to Haskell and its excellent ecosystem. Of course, prior to my startup I spent 4 years dabbling with Haskell to learn it, but once skilled up it is super effective. I do believe any developer can learn Haskell and even learn it quickly in the right environment.
 
 What's next? I am working on promoting [Deadpendency](https://deadpendency.com/) and I hope to get more users. Have I spent too much time geeking out on Haskell and not enough time thinking about the idea? I guess we will see 😊. Either way, I have had enough fun and learnt enough that I will consider the experience worth it.
 
