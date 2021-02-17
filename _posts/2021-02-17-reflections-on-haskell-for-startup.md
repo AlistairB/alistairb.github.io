@@ -2,7 +2,6 @@
 layout: post
 title: "Reflections On Using Haskell For My Startup"
 tags: [haskell]
-hidden: true
 comments: true
 ---
 
