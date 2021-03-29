@@ -27,7 +27,7 @@ When learning a new programming language, it is usually best to choose some lang
 
 Haskell is very different from mainstream popular programming languages in a few ways.
 
-<img class="center-image" width="400" src="https://i.imgflip.com/537g0e.jpg" alt="Haskell meme"/>
+<img class="center-image" width="400" src="https://i.imgflip.com/53jqnd.jpg" alt="Haskell meme"/>
 
 ### Functional Programming
 
@@ -63,6 +63,12 @@ This means:
 * One day you might be able to just use Haskell directly, not do FP in OO languages ;)
 
 ## Expect Some Friction
+
+Haskell is awesome, but it is a niche language. You can expect some challenge in getting things set up and of course learning the language. Some describe it as learning to program again from scratch.
+
+The key to making the journey manageable is to find some community to support you. The [FP slack](https://fpchat-invite.herokuapp.com/) and [FP discord](https://top.gg/servers/280033776820813825) are both excellent choices.
+
+## How To Learn
 
 ## Haskell Is Fun
 
