@@ -75,10 +75,12 @@ This means:
 
 Haskell is awesome, but it is a niche language. You can expect some challenge in getting things set up and of course learning the language. Some describe it as learning to program again from scratch.
 
+<img class="center-image" width="400" src="https://i.imgflip.com/537i18.jpg" alt="Haskell meme"/>
+
 The key to making the journey manageable is to find some community to support you. The [FP slack](https://fpchat-invite.herokuapp.com/){:target="_blank" rel="noopener"} and [FP discord](https://top.gg/servers/280033776820813825){:target="_blank" rel="noopener"} are both excellent choices.
 
 I like [this guide](https://github.com/bitemyapp/learnhaskell){:target="_blank" rel="noopener"} (although I would use the official [fp-course](https://github.com/system-f/fp-course){:target="_blank" rel="noopener"} rather than the forked one).
 
-<img class="center-image" width="400" src="https://i.imgflip.com/537i18.jpg" alt="Haskell meme"/>
-
 Above all, I think learning Haskell is super fun. Try and enjoy the ride 😊
+
+<img class="center-image" width="400" src="https://i.imgflip.com/53oi49.jpg" alt="Haskell meme"/>
