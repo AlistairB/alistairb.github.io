@@ -15,7 +15,7 @@ My belief is that in terms of _long term_ improvement, learning [Haskell](https:
 
 Learning a new programming language is a great way to improve as a programmer. Each language has its own unique take on things and will have some great ideas.
 
-I ended up working in Ruby for a few years when at the time I was much more interested in working in Scala. However, I saw many cool things about Ruby and it ended up teaching me a lot. For example, I had not done strict TDD before which is very popular in Ruby. I learnt the pros and cons of this approach and I can now apply it well when needed.
+I ended up working in Ruby for a few years when at the time I was much more interested in Scala. However, I saw many cool things about Ruby and it ended up teaching me a lot. For example, I had not done strict [TDD](https://en.wikipedia.org/wiki/Test-driven_development){:target="_blank" rel="noopener"} before which is very popular in Ruby. I learnt the pros and cons of this approach and I can now apply it well when needed.
 
 Usually these new learnings are not strictly tied to the new language. You can take them and use them in many different programming languages.
 
@@ -25,9 +25,11 @@ Usually these new learnings are not strictly tied to the new language. You can t
 
 When learning a new programming language, it is usually best to choose some language that is very different from your known programming languages. For example, if you know Ruby you probably wouldn't get a huge amount out of learning Python, as they are quite similar.
 
-Haskell is very different from mainstream popular programming languages in a few ways.
+Haskell is very different from mainstream popular programming languages. Thus it has a lot to teach to developers who have mainly learnt mainstream languages.
 
 <img class="center-image" width="400" src="https://i.imgflip.com/53jqnd.jpg" alt="Haskell meme"/>
+
+How is it different?
 
 ### Functional Programming
 
@@ -38,11 +40,9 @@ Haskell is a purely functional programming (FP) language. What is FP? I see it a
 * Similarly, it is immutable, so you must learn how FP manages this.
 * It's implementation closely mirrors the math behind FP, so you are learning something close to the real underlying concepts.
 
-Haskell actually inspired a lot of the FP implementations in more popular languages. Knowing FP in Haskell will make these simpler implementations easy to understand.
+Haskell actually inspired a lot of the FP implementations in more popular languages. Knowing FP in Haskell will make these (typically simpler) implementations easy to understand.
 
 For example, [`Aggregate`](https://docs.microsoft.com/en-us/dotnet/api/system.linq.enumerable.aggregate?view=net-5.0){:target="_blank" rel="noopener"} in [LINQ](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/), is really just [`foldl'`](https://hackage.haskell.org/package/base-4.15.0.0/docs/Data-List.html#v:foldl){:target="_blank" rel="noopener"} from Haskell.
-
-You will also understand how such tools were meant to be used.
 
 <img class="center-image" width="400" src="https://i.imgflip.com/537fk6.jpg" alt="Haskell meme"/>
 
@@ -50,7 +50,7 @@ You will also understand how such tools were meant to be used.
 
 Haskell builds on [type theory](https://en.wikipedia.org/wiki/Type_theory){:target="_blank" rel="noopener"} and has an advanced type checker. This includes 'type-level' programming, or code that is run by the compiler at compile time, not at run time.
 
-Like how many mainstream languages are getting FP features, they are also getting (more sophisticated) [type](https://blog.appsignal.com/2021/01/27/rbs-the-new-ruby-3-typing-language-in-action.html){:target="_blank" rel="noopener"} [checkers](http://mypy-lang.org){:target="_blank" rel="noopener"}. Again, if you learn Haskell these simpler type systems should be easy to use.
+Like how many mainstream languages are getting FP features, they are also getting (more sophisticated) [type](https://blog.appsignal.com/2021/01/27/rbs-the-new-ruby-3-typing-language-in-action.html){:target="_blank" rel="noopener"} [checkers](http://mypy-lang.org){:target="_blank" rel="noopener"}. Again, if you learn Haskell these (likely simpler) type systems should be easy to use.
 
 For example, Kotlin has [sealed classes](https://kotlinlang.org/docs/sealed-classes.html){:target="_blank" rel="noopener"} which [support matching](https://kotlinlang.org/docs/sealed-classes.html#sealed-classes-and-when-expression){:target="_blank" rel="noopener"}. It can be hard to see how these might be useful and I imagine many OO background developers would ignore them.
 
@@ -67,7 +67,7 @@ Haskell on the other hand is a sweet spot where it is highly advanced, but you c
 This means:
 
 * You can learn Haskell by building real things.
-* One day you might be able to just use Haskell directly, not do FP in OO languages. 😉
+* One day you might be able to just use Haskell directly in prod, not do FP in OO languages. 😉
 
 <img class="center-image" width="400" src="https://i.imgflip.com/53ofxl.jpg" alt="Haskell meme"/>
 
