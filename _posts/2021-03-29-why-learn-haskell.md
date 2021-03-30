@@ -3,6 +3,7 @@ layout: post
 title: "Why Learn Haskell?"
 tags: [haskell]
 comments: true
+hidden: true
 ---
 
 As developers, there is so much we can learn to improve our skills, ranging from deep theory, to small practical tidbits of information. It can be overwhelming at times and we are forced to pick what we want to learn deeply and what we just want to gloss over. You can't learn it all!
