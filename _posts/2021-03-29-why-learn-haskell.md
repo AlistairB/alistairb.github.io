@@ -16,7 +16,7 @@ My belief is that in terms of _long term_ improvement, learning [Haskell](https:
 
 Learning a new programming language is a great way to improve as a programmer. Each language has its own unique take on things and will have some great ideas.
 
-I ended up working in Ruby for a few years when at the time I was much more interested in Scala. However, I saw many cool things about Ruby and it ended up teaching me a lot. For example, I had not done strict [TDD](https://en.wikipedia.org/wiki/Test-driven_development){:target="_blank" rel="noopener"} before which is very popular in Ruby. I learnt the pros and cons of this approach and I can now apply it well when needed.
+I ended up working in Ruby for a few years when at the time I was much more interested in Scala. However, I saw many cool things about Ruby and it ended up teaching me a lot. For example, I had not done strict [TDD](https://en.wikipedia.org/wiki/Test-driven_development){:target="_blank" rel="noopener"} before which is very popular in Ruby. I learnt the pros and cons of this approach and now I can apply it well when needed.
 
 Usually these new learnings are not strictly tied to the new language. You can take them and use them in many different programming languages.
 
@@ -26,7 +26,7 @@ Usually these new learnings are not strictly tied to the new language. You can t
 
 When learning a new programming language, it is usually best to choose some language that is very different from your known programming languages. For example, if you know Ruby you probably wouldn't get a huge amount out of learning Python, as they are quite similar.
 
-Haskell is very different from mainstream popular programming languages. Thus it has a lot to teach to developers who have mainly learnt mainstream languages.
+Haskell is very different from mainstream popular programming languages. Most developers work in these mainstream languages and so Haskell has a lot to teach them.
 
 <img class="center-image" width="400" src="https://i.imgflip.com/53jqnd.jpg" alt="Haskell meme"/>
 
@@ -57,7 +57,7 @@ For example, Kotlin has [sealed classes](https://kotlinlang.org/docs/sealed-clas
 
 However, these a really just a form of [sum types and pattern matching](https://www.schoolofhaskell.com/school/to-infinity-and-beyond/pick-of-the-week/sum-types){:target="_blank" rel="noopener"}, which are incredibly useful. You can learn the clean implementation in Haskell then apply this knowledge in other languages.
 
-<img class="center-image" width="400" src="https://i.imgflip.com/537gu8.jpg" alt="Haskell meme"/>
+<img class="center-image" width="400" src="https://i.imgflip.com/54ijru.jpg" alt="Haskell meme"/>
 
 ## You can use Haskell in Prod
 
@@ -82,6 +82,6 @@ The key to making the journey manageable is to find some community to support yo
 
 I like [this guide](https://github.com/bitemyapp/learnhaskell){:target="_blank" rel="noopener"} (although I would use the official [fp-course](https://github.com/system-f/fp-course){:target="_blank" rel="noopener"} rather than the forked one).
 
-Above all, I think learning Haskell is super fun. Try and enjoy the ride 😊
+Above all, I think learning Haskell is super fun. Try and enjoy the ride. 😊
 
 <img class="center-image" width="400" src="https://i.imgflip.com/53oi49.jpg" alt="Haskell meme"/>
