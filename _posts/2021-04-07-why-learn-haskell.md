@@ -3,7 +3,6 @@ layout: post
 title: "Why Learn Haskell?"
 tags: [haskell]
 comments: true
-hidden: true
 ---
 
 As developers, there is so much we can learn to improve our skills, ranging from deep theory, to small practical tidbits of information. It can be overwhelming at times and we are forced to pick what we want to learn deeply and what we just want to gloss over. You can't learn it all!
@@ -12,7 +11,7 @@ My belief is that in terms of _long term_ improvement, learning [Haskell](https:
 
 <img class="center-image" width="400" src="https://i.imgflip.com/537cg3.jpg" alt="Haskell meme"/>
 
-## Why Learn any new Language
+## Why Learn any New Language
 
 Learning a new programming language is a great way to improve as a programmer. Each language has its own unique take on things and will have some great ideas.
 
@@ -22,7 +21,7 @@ Usually these new learnings are not strictly tied to the new language. You can t
 
 <img class="center-image" width="400" src="https://i.imgflip.com/537dq5.jpg" alt="Haskell meme"/>
 
-## Ok but why Learn Haskell
+## Ok but Why Learn Haskell
 
 When learning a new programming language, it is usually best to choose some language that is very different from your known programming languages. For example, if you know Ruby you probably wouldn't get a huge amount out of learning Python, as they are quite similar.
 
@@ -57,9 +56,9 @@ For example, Kotlin has [sealed classes](https://kotlinlang.org/docs/sealed-clas
 
 However, these a really just a form of [sum types and pattern matching](https://www.schoolofhaskell.com/school/to-infinity-and-beyond/pick-of-the-week/sum-types){:target="_blank" rel="noopener"}, which are incredibly useful. You can learn the clean implementation in Haskell then apply this knowledge in other languages.
 
-<img class="center-image" width="400" src="https://i.imgflip.com/54ijru.jpg" alt="Haskell meme"/>
+<img class="center-image" width="400" src="https://i.imgflip.com/54rcfq.jpg" alt="Haskell meme"/>
 
-## You can use Haskell in Prod
+## You Can Use Haskell in Prod
 
 There are even fancier languages than Haskell. Not more advanced in all ways, but that take a specific idea and go much further than Haskell. Notably, [Idris](https://www.idris-lang.org){:target="_blank" rel="noopener"} and [Agda](https://agda.readthedocs.io){:target="_blank" rel="noopener"}. However, you can't easily use these languages in prod. Either because they are too immature, or they aren't really designed for it.
 
@@ -82,6 +81,6 @@ The key to making the journey manageable is to find some community to support yo
 
 I like [this guide](https://github.com/bitemyapp/learnhaskell){:target="_blank" rel="noopener"} (although I would use the official [fp-course](https://github.com/system-f/fp-course){:target="_blank" rel="noopener"} rather than the forked one).
 
-Above all, I think learning Haskell is super fun. Try and enjoy the ride. 😊
+Above all, I think learning Haskell should be fun. Try and enjoy the ride. 😊
 
 <img class="center-image" width="400" src="https://i.imgflip.com/53oi49.jpg" alt="Haskell meme"/>
