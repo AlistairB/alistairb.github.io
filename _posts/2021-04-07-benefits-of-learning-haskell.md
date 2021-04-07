@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "The Benefits Of Learning Haskell"
+title: "The Benefits of Learning Haskell"
 tags: [haskell]
 comments: true
 ---
