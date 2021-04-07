@@ -23,7 +23,7 @@ Usually these new learnings are not strictly tied to the new language. You can t
 
 ## Ok but Why Learn Haskell
 
-When learning a new programming language, it is usually best to choose some language that is very different from your known programming languages. For example, if you know Ruby you probably wouldn't get a huge amount out of learning Python, as they are quite similar.
+When learning a new programming language for improvement, it is usually best to choose some language that is very different from your known programming languages. For example, if you know Ruby you probably wouldn't get a huge amount out of learning Python, as they are quite similar.
 
 Haskell is very different from mainstream popular programming languages. Most developers work in these mainstream languages and so Haskell has a lot to teach them.
 
