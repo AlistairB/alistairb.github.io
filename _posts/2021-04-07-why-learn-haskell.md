@@ -48,7 +48,7 @@ For example, [`Aggregate`](https://docs.microsoft.com/en-us/dotnet/api/system.li
 
 ### Static Type Checking
 
-Haskell builds on [type theory](https://en.wikipedia.org/wiki/Type_theory){:target="_blank" rel="noopener"} and has an advanced type checker. This includes 'type-level' programming, or code that is run by the compiler at compile time, not at run time.
+Haskell builds on [type theory](https://en.wikipedia.org/wiki/Type_theory){:target="_blank" rel="noopener"} and has an advanced type system. This includes 'type-level' programming, or code that is run by the compiler at compile time, not at run time.
 
 Like how many mainstream languages are getting FP features, they are also getting (more sophisticated) [type](https://blog.appsignal.com/2021/01/27/rbs-the-new-ruby-3-typing-language-in-action.html){:target="_blank" rel="noopener"} [checkers](http://mypy-lang.org){:target="_blank" rel="noopener"}. Again, if you learn Haskell these (likely simpler) type systems should be easy to use.
 
