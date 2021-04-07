@@ -42,7 +42,7 @@ Haskell is a purely functional programming (FP) language. What is FP? I see it a
 
 Haskell actually inspired a lot of the FP implementations in more popular languages. Knowing FP in Haskell will make these (typically simpler) implementations easy to understand.
 
-For example, [`Aggregate`](https://docs.microsoft.com/en-us/dotnet/api/system.linq.enumerable.aggregate?view=net-5.0){:target="_blank" rel="noopener"} in [LINQ](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/), is really just [`foldl'`](https://hackage.haskell.org/package/base-4.15.0.0/docs/Data-List.html#v:foldl){:target="_blank" rel="noopener"} from Haskell.
+For example, [`Aggregate`](https://docs.microsoft.com/en-us/dotnet/api/system.linq.enumerable.aggregate?view=net-5.0){:target="_blank" rel="noopener"} in [LINQ](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/), is really just [`foldl`](https://hackage.haskell.org/package/base-4.15.0.0/docs/Data-List.html#v:foldl){:target="_blank" rel="noopener"} from Haskell.
 
 <img class="center-image" width="400" src="https://i.imgflip.com/537fk6.jpg" alt="Haskell meme"/>
 
