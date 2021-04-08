@@ -62,7 +62,7 @@ However, these a really just a form of [sum types and pattern matching](https://
 
 There are even fancier languages than Haskell. Not more advanced in all ways, but that take a specific idea and go much further than Haskell. Notably, [Idris](https://www.idris-lang.org){:target="_blank" rel="noopener"} and [Agda](https://agda.readthedocs.io){:target="_blank" rel="noopener"}. However, you can't easily use these languages in prod. Either because they are too immature, or they aren't really designed for it.
 
-Haskell on the other hand is a sweet spot where it is highly advanced, but you can (and many companies do) [use it in prod](reflections-on-haskell-for-startup){:target="_blank" rel="noopener"}.
+Haskell on the other hand is a sweet spot where it is highly advanced, but you can (and many companies do) [use it in prod](/reflections-on-haskell-for-startup){:target="_blank" rel="noopener"}.
 
 This means:
 
