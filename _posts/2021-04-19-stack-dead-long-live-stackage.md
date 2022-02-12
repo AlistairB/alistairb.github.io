@@ -39,4 +39,10 @@ Thankfully, while Stack development is slowing, Stackage has continued to nicely
 
 ## Cabal is rapidly improving
 
-Meanwhile, the [cabal project is going swimmingly](https://github.com/haskell/cabal/graphs/contributors).
+Meanwhile, the [cabal project is going swimmingly](https://github.com/haskell/cabal/graphs/contributors). I won't really claim to understand why, but I think some credit should go to the [Haskell Foundation](https://haskell.foundation/).
+
+As an outsider I observe:
+
+* Lots of active work, including paying down tech debt and new features.
+* Much more welcoming attitude towards newcomers.
+* Much more openness to
