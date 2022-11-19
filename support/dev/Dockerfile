@@ -1,6 +1,6 @@
 # matches https://pages.github.com/versions
 # pinned to sha for reproducability
-FROM ruby:2.7.3@sha256:ee2b19ced1d44600963c52691b9b6975e209286e7168230d03afe7894f9c81a0
+FROM ruby:2.7.4@sha256:c4f29f28d297efcce62455a20d38383155a85eda9de38ed4635c2c5f3017df03
 
  # ruby base doesn't specify locale https://github.com/docker-library/ruby/issues/45
 ENV LANG C.UTF-8
