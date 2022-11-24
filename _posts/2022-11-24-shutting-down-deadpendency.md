@@ -1,8 +1,7 @@
 ---
 layout: post
 title: "Shutting Down Deadpendency"
-tags: [haskell]
-hidden: true
+tags: []
 comments: true
 ---
 
@@ -91,4 +90,4 @@ The key takeaway for me is that development tools really need to help with the c
 
 I spent a bit over a year working solely on Deadpendency and have been supporting it on the side since then. I certainly don't regret this time as I learnt a huge amount. However, it is not free to run and I don't think it has a profitable future.
 
-I plan to make Deadpendency er dead on the 1st of December. Thanks to all that used it! 😊
+I plan to make Deadpendency er dead on the 10th of December. Thanks to all that used it! 😊
