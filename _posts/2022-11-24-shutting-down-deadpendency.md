@@ -7,7 +7,7 @@ comments: true
 
 In Feb in 2020 I quit my full time job to create my idea for a startup, [Deadpendency](https://deadpendency.com/){:target="_blank" rel="noopener"}. There were some [trials and tribulations](/my-experience-creating-a-one-person-startup), but ultimately I was successful and I built the thing.
 
-Unfortunately though, I have decided to pull the plug and I thought I would write up my reasoning and some reflections.
+Unfortunately, I have decided to pull the plug and I thought I would write up my reasoning and some reflections.
 
 ## What Is Deadpendency?
 
