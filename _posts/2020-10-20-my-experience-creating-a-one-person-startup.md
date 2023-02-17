@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "My Experience Creating A One Person Startup"
+tags: [Deadpendency]
 comments: true
 ---
 
