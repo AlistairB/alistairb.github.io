@@ -5,7 +5,7 @@ tags: [Deadpendency, haskell, startup]
 comments: true
 ---
 
-I created this tool called [Deadpendency](https://deadpendency.com/){:target="_blank" rel="noopener"}, which is a GitHub app which checks for dead (abandoned) dependencies in your GitHub repo.
+I created a tool called [Deadpendency](https://deadpendency.com/){:target="_blank" rel="noopener"}, which is a GitHub app which checks for dead (abandoned) dependencies in your GitHub repo.
 
 There were some [trials and tribulations](/my-experience-creating-a-one-person-startup), but ultimately I was successful and I built the thing. In Haskell no less, which [worked out pretty great](/reflections-on-haskell-for-startup)!
 
@@ -35,7 +35,7 @@ Probably the best aspect is something I have [iterated on for a number of years]
 
 ### The Deadpendency Solution
 
-Purely as a solution to the problem, I think it is quite clean. I had to iterate on it a lot as it is seemingly pretty simple, but in actuality quite complex (like virtually all software..).
+Purely as a solution to the problem, I think it is quite clean. I had to iterate on it a lot as it is seemingly pretty simple, but in actuality quite complex (which can generally be expected 😉).
 
 ### A Complete Monorepo Haskell Solution
 
