@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Reflections On Using Haskell For My Startup"
-tags: [haskell, Deadpendency]
+tags: [haskell, Deadpendency, startup]
 comments: true
 ---
 

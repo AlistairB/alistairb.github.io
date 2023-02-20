@@ -2,7 +2,7 @@
 layout: post
 title: "Shutting Down Deadpendency"
 tags: []
-tags: [Deadpendency]
+tags: [Deadpendency, startup]
 comments: true
 ---
 
