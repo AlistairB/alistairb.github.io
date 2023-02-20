@@ -5,7 +5,7 @@ tags: [Deadpendency, haskell, startup]
 comments: true
 ---
 
-I created a tool called [Deadpendency](https://deadpendency.com/){:target="_blank" rel="noopener"}, which is a GitHub app which checks for dead (abandoned) dependencies in your GitHub repo.
+I created a tool called [Deadpendency](https://deadpendency.com/){:target="_blank" rel="noopener"}, which is a GitHub app that checks for dead (abandoned) dependencies in your GitHub repo.
 
 There were some [trials and tribulations](/my-experience-creating-a-one-person-startup), but ultimately I was successful and I built the thing. In Haskell no less, which [worked out pretty great](/reflections-on-haskell-for-startup)!
 
@@ -40,7 +40,6 @@ Purely as a solution to the problem, I think it is quite clean. I had to iterate
 ### A Complete Monorepo Haskell Solution
 
 Contained is a complete solution with all the terraform to run Deadpendency, or any API feeding into a pipeline, on [google cloud run](https://cloud.google.com/run). It is done in a monorepo style with minimal overhead to connect a bunch of small components (AWS Lambda like functions) together. I think it worked out quite nicely.
-
 
 ### Lots Of Pretty Diagrams And Reflections
 
