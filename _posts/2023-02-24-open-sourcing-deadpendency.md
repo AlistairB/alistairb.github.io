@@ -23,7 +23,7 @@ tl;dr
 
 ## Why Open Source It?
 
-In a nutshell, I don't have plans to work on it anymore, so it can at least have a chance of providing others some value if it is open source.
+In a nutshell, I don't have plans to work on it anymore, so why not 🙂.
 
 *Disclaimer:* It was a startup and I was juggling full time work for part of it, so certain corners were cut.. Nonetheless, I am generally quite proud of it and think it may be interesting to Haskell developers in various ways.
 
