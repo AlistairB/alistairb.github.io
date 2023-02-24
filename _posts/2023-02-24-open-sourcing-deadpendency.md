@@ -39,7 +39,7 @@ Purely as a solution to the problem, I think it is quite clean. I had to iterate
 
 ### A Complete Monorepo Haskell Solution
 
-Contained is a complete solution with all the terraform to run Deadpendency, or any API feeding into a pipeline, on [google cloud run](https://cloud.google.com/run) ([why I chose google cloud](https://alistairb.dev/haskell-on-google-cloud-is-great/).). It is done in a monorepo style with minimal overhead to connect a bunch of small components (AWS Lambda like functions) together. I think it worked out quite nicely.
+Contained is a complete solution with all the terraform to run Deadpendency, or any API feeding into a pipeline, on [google cloud run](https://cloud.google.com/run) ([why I chose google cloud](https://alistairb.dev/haskell-on-google-cloud-is-great/)). It is done in a monorepo style with minimal overhead to connect a bunch of small components (AWS Lambda like functions) together. I think it worked out quite nicely.
 
 ### Lots Of Pretty Diagrams And Reflections
 
