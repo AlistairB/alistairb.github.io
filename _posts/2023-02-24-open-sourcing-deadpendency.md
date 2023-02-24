@@ -35,11 +35,13 @@ Probably the best aspect is something I have [iterated on for a number of years]
 
 ### The Deadpendency Solution
 
-Purely as a solution to the problem, I think it is quite clean. I had to iterate on it a lot as it is seemingly pretty simple, but in actuality quite complex (which can generally be expected 😉).
+Purely as a solution to the problem, I think it is quite clean. I had to iterate on it a lot as it is seemingly pretty simple, but in actuality quite complex (shocking I know.. 😉).
 
 ### A Complete Monorepo Haskell Solution
 
 Contained is a complete solution with all the terraform to run Deadpendency, or any API feeding into a pipeline, on [google cloud run](https://cloud.google.com/run). It is done in a monorepo style with minimal overhead to connect a bunch of small components (AWS Lambda like functions) together. I think it worked out quite nicely.
+
+[Why I chose google cloud](https://alistairb.dev/haskell-on-google-cloud-is-great/).
 
 ### Lots Of Pretty Diagrams And Reflections
 
