@@ -55,4 +55,4 @@ No, not really. It is a very specific solution designed to run as a GitHub app i
 
 <img class="center-image" width="400" src="https://i.imgflip.com/7br2mr.jpg" alt="Haskell meme"/>
 
-[Check it out]([https://github.com/deadpendency/deadpendency](https://github.com/deadpendency/deadpendency))!
+[Check it out](https://github.com/deadpendency/deadpendency)!
